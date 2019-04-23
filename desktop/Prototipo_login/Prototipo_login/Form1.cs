@@ -24,32 +24,21 @@ namespace Prototipo_login
             Application.Exit();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+              private void label2_Click(object sender, EventArgs e)
         {
+            if(Application.OpenForms.OfType<Form2>().Count() == 0)
+            {
+                Thread nt = new Thread(novoForm);
+                nt.SetApartmentState(ApartmentState.STA);
+                nt.Start();
+
+            }
+            else
+            {
+
+                MessageBox.Show("Tela de login já está aberta!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            
-            Thread nt = new Thread(novoForm);
-            nt.SetApartmentState(ApartmentState.STA);
-            nt.Start();
         }
 
         private void novoForm()
