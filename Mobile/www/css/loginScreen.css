@@ -1,0 +1,188 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: url(../images/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-box {
+	width: 300px;
+	height: 300px;
+	background: rgba(255,255,255,0.7);
+
+	border-width: 2px;
+  	border-style: solid;
+ 	border-image: linear-gradient(to top right, black, rgb(50,167,255), black) 1 stretch;
+
+ 	overflow: hidden;
+}
+
+#login-inside-box {
+	width: 600px;
+	position: relative;
+}
+
+.internal-container {
+	width: 270px;
+	height: 270px;	
+	margin: 15px;
+
+	float: left;
+}
+
+.login-label {
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 25px;
+}
+
+.login-info {
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 12px;
+}
+
+.login-logo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	width: 65px;
+	height: 50px;
+
+	background: url(../images/logo.png);
+	background-size: cover;
+}
+
+#input-email, #input-password {
+	width: 100%;
+	height: 30px;
+	margin-top: 10px;
+
+	border-image-source: linear-gradient(to right, black, rgb(50,167,255));
+  	border-width: 1.5px;
+  	border-image-slice: 1;
+	
+	border-top: none;
+	border-right: none;
+	border-left: none;
+ 	
+ 	background: rgba(255,255,255,0.0);
+
+ 	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#input-email:focus, #input-password:focus {
+	border: solid 1.5px rgb(50,167,255);
+	border-radius: 5px;
+
+	font-style: italic;
+}
+
+.login-btn {
+	position: relative;
+	float: right;
+	top: 15%;
+}
+
+.login-btn button, .voltar-btn button {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.voltar-btn button {
+	border: none;
+	background-color: rgba(50,167,255,0);
+
+	color: black;
+
+	padding: 8px 20px 8px 0px;
+
+	margin-bottom: 13%;
+}
+
+.login-btn button {
+	border: 0.5px solid black;
+	background-color: rgba(50,167,255);
+
+	color: white;
+	text-shadow: 1px 1px 1px black;
+
+	padding: 8px 20px 8px 20px;
+	border-radius: 5px;
+}
+
+.userdata {
+	float: right;
+}
+
+.userpic {
+	width: 70px;
+	height: 70px;
+
+	background-image: url(../images/avatarDefault.png);
+	background-position: center;
+	background-size: cover;
+
+	border: 0.5px solid black;
+	border-radius: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.username {
+	padding: 2px;
+
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 10px;
+
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+
+	overflow: visible;
+}
+
+
+/* classe de controle para efeito de transição*/
+
+.transparent {
+	opacity: 0;
+
+	transition: opacity 0.4s;
+}
+
+.block {
+	opacity: 1;
+
+	transition: opacity 0.8s;
+}
+
+.no-fade {
+	left: 300px;
+	opacity: 0;
+}
+
+.fade-initial {
+	transition: left 0.4s, opacity 0.5s;
+	transition-timing-function: ease-out;
+
+	left: 0px;
+}
+
+.fade-esquerda {
+	transition: left 0.4s, opacity 0.5s;
+	transition-timing-function: ease-out;
+
+	left: -300px;
+}
