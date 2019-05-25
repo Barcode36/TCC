@@ -19,6 +19,8 @@
   	border-style: solid;
  	border-image: linear-gradient(to top right, black, rgb(50,167,255), black) 1 stretch;
 
+	box-shadow: 0px 0px 20px -5px black;	
+
  	overflow: hidden;
 }
 
