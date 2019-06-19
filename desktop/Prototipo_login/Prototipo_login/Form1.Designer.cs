@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -39,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -84,22 +84,12 @@
             this.label6.Text = "X";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Prototipo_login.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(148, 144);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label5.Location = new System.Drawing.Point(469, 350);
+            this.label5.Location = new System.Drawing.Point(469, 214);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 19);
             this.label5.TabIndex = 25;
@@ -110,7 +100,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label4.Location = new System.Drawing.Point(275, 350);
+            this.label4.Location = new System.Drawing.Point(275, 214);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 19);
             this.label4.TabIndex = 24;
@@ -125,12 +115,13 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(317, 270);
+            this.button1.Location = new System.Drawing.Point(330, 268);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(172, 43);
             this.button1.TabIndex = 23;
             this.button1.Text = "Entrar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
@@ -170,6 +161,16 @@
             this.label2.Size = new System.Drawing.Size(52, 19);
             this.label2.TabIndex = 19;
             this.label2.Text = "Login:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Prototipo_login.Properties.Resources.logo1;
+            this.pictureBox1.Location = new System.Drawing.Point(5, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(143, 107);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
