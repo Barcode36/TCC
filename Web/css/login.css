@@ -65,8 +65,16 @@
 			#main .avatar img {
 				display: block;
 				margin: 0 auto;
-				border-radius: 100%;
+				width: 90px;
 				box-shadow: 0 0 0 1.5em #ffffff;
+			}
+
+			.avatarImg{
+				height: 100%;
+				width: 150px;
+				border-radius: 30%;
+				margin: 0 auto;
+				background-color: rgba(150, 150, 150, 0.6);
 			}
 
 			#main .avatar:before {
