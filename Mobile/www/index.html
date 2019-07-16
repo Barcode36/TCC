@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Bem vindo ao Agenda!</title>
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/loginScreen.css">
+    </head>
+    <body>
+    	<div class="container">
+	    	<div id="login-box">
+	    		<div id="login-inside-box" class="no-fade">
+		    		<div id="box-email" class="internal-container transparent">
+			    		<a href="index.html">
+			    			<div class="login-logo"></div>
+			    		</a>
+			    		<div class="login-label">
+			    			<p>Entrar</p>
+			    		</div>
+			    		<div class="login-email">
+			    			<input type="email" name="login-email" id="input-email" placeholder="E-mail de usuário...">
+			    		</div>
+			    		<div class="login-info">
+			    			<p>Não tem uma conta? <a href="cadastrar.html">Crie uma!</a></p>
+			    		</div>
+			    		<div class="login-btn">
+			    			<button type="submit" id="btn-avancar"><p>Avançar</p></button>
+			    		</div>
+			    	</div>
+
+			    	<div id="box-password" class="internal-container">
+						<div class="userdata">
+							<div class="userpic">
+								<div class="username">~~Username~~</div>
+							</div>
+						</div>
+			    		<div class="voltar-btn">
+			    			<button type="submit" class="btn-login" id="btn-voltar"><img src="images/backArrow.png" height="10px"> Voltar</button>
+						</div>
+			    		<div class="login-label">
+			    			<p>Senha</p>
+			    		</div>
+			    		<div class="login-email">
+			    			<input type="password" name="login-password" id="input-password" placeholder="Senha...">
+			    		</div>
+			    		<div class="login-info">
+			    			<p>Esqueceu a senha? <a href="#redefinir">Redefinir!</a></p>
+			    		</div>
+			    		<div class="login-btn">
+			    			<button type="submit" class="btn-login" id="btn-logar"><p>Logar</p></button>
+			    		</div>
+			    	</div>
+		    	</div>
+	    	</div>
+    	</div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/loginScreen.js"></script>
+    </body>
+</html>
