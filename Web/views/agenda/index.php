@@ -5,6 +5,13 @@
         header('Location: ../login/index.php');
         exit();
     }
+
+    $result_events = "SELECT title, start, end FROM events";
+    $resultado = $conn->prepare($result_events);
+    $resultado->execute();
+
+    $date = new DateTime();
+    $atual = $date->format('Y-m-d H:i:s');
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +29,6 @@
     <script src='packages/timegrid/main.js'></script>
     <script src='packages/list/main.js'></script>
     <script src='packages/core/locales/pt-br.js'></script>
-    <script src='js/theme-chooser.js'></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
@@ -33,31 +39,51 @@
 
 </head>
 <body>
-    <!-- Seleção de tema desabilitada -->
-    <div id='theme-system-selector' style='display:none'>
-        <select>
-            <option value='standard' selected>Sem tema</option>
-        </select>
-    </div>
 
-    <h2>Olá, <?php echo $_SESSION['nome'];?></h2>
-    <h2><a href="logout.php">Sair</a></h2>
+    <!-- Barra de Identificação e Logout -->
+    <nav class="navbar fixed-top navbar-light bg-light">
+        <span class="navbar-text">Olá, <b><?php echo $_SESSION['nome'];?></b></span>
+        <form class="form-inline ">
+            <button class="btn btn-sm btn-outline-success" type="submit"><i class="fas fa-sign-out-alt"><a href="logout.php">Sair</a></i></button>
+        </form>
+    </nav>
+    
+    <br><br>
 
     <!-- Corpo do site -->
-    <div class="container">
-        <div class="page-header">
-			<h1>Agenda</h1>
-		</div>
+    <div id="wrap">
         <?php
             if(isset($_SESSION['msg'])){
                 echo $_SESSION['msg'];
                 unset($_SESSION['msg']);
             }
         ?>
+        <div id='external-events'>
+            <h4>Próximos Eventos</h4>
+            <?php while($row = $resultado->fetch(PDO::FETCH_ASSOC)){ if($row['end'] < $atual) continue; ?>
+            <div id='external-events-list'>
+                <div class='dado'><?php echo $row['title'] . ' - ' . date('d/m', strtotime($row['start'])); ?></div>
+            </div>
+            <?php }; ?>
+            <p>
+                <input type='checkbox' checked/>
+                <label>Exluir após o término</label>
+            </p>
+        </div>
         <div id='calendar'></div>
     </div>
+    
+    <!-- Efeito Parallax -->
+    <section class="content-site"></section>
+    <section class="img-site"></section>
+    <!-- Footer -->
+    <footer id="footer">
+		<ul class="copyright">
+			<li>&copy; COTIL / UNICAMP</li><li> 2019</li>
+		</ul>
+	</footer>
 
-    <!-- Modal Eventos Cadastrados-->
+    <!-- Modal Eventos Cadastrados -->
     <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">

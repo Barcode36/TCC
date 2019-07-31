@@ -20,7 +20,9 @@
             'color' => $color, 
             'start' => $start, 
             'end' => $end, 
-            ];
+        ];
+
+
     }
 
     echo json_encode($eventos);

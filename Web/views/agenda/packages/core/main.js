@@ -4563,7 +4563,7 @@ Docs & License: https://fullcalendar.io/
             if (typeof pluginInput === 'string') {
                 var globalName = 'FullCalendar' + capitaliseFirstLetter(pluginInput);
                 if (!window[globalName]) {
-                    console.warn('Plugin file not loaded for ' + pluginInput);
+                    console.warn('Plugin desabilitado ' + pluginInput);
                 }
                 else {
                     plugins.push(window[globalName].default); // is an ES6 module

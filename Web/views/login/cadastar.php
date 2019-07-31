@@ -8,7 +8,7 @@
     $senha = mysqli_real_escape_string($conexao, trim(md5($_POST['senha'])));
     $telefone = mysqli_real_escape_string($conexao, trim($_POST['telefone']));
 
-    $sql = "SELECT COUNT(*) AS Total FROM usuario WHERE usuario = '{$nome}'";
+    $sql = "SELECT COUNT(*) AS Total FROM usuario WHERE nome = '{$nome}' AND usuario = '{$usuario}'";
     $result = mysqli_query($conexao, $sql);
     $row = mysqli_fetch_assoc($result);
 

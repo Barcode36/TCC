@@ -1,58 +1,46 @@
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
-  var calendar;
+  
 
-  initThemeChooser({
-
-    init: function(themeSystem) {
-      calendar = new FullCalendar.Calendar(calendarEl, {
-        locale: 'pt-br',
-        plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list' ],
-        themeSystem: themeSystem,
-        header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-        },
-        weekNumbers: true,
-        navLinks: true, 
-        editable: true,
-        eventLimit: true, 
-        events: 'list_eventos.php',
-        extraParams: function () {
-          return {
-            cachebuster: new Date().valueOf()
-          };
-        },
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    locale: 'pt-br',
+    plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+    header: {
+      left: 'prev,next, today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+    },    
+    navLinks: true, 
+    editable: true,
+    eventLimit: true, 
+    events: 'list_eventos.php',
+    extraParams: function () {
+      return {
+        cachebuster: new Date().valueOf()
+      };
+    },
          
-        eventClick: function (info) {
-          info.jsEvent.preventDefault();
+    eventClick: function (info) {
+      info.jsEvent.preventDefault();
 
-          $('#visualizar #id').text(info.event.id);
-          $('#visualizar #title').text(info.event.title);
-          $('#visualizar #start').text(info.event.start.toLocaleString());
-          $('#visualizar #end').text(info.event.end.toLocaleString());
-          $('#visualizar').modal('show');
-        },
-
-        selectable: true,
-        selectHelper: true,
-        select: function (info) {
-          //alert('Início do Evento: ' + info.start.toLocaleString());
-          $('#cadastrar #start').val(info.start.toLocaleString());
-          $('#cadastrar #end').val(info.end.toLocaleString());
-          $('#cadastrar').modal('show');
-        }
-      });
-      calendar.render();
+      $('#visualizar #id').text(info.event.id);
+      $('#visualizar #title').text(info.event.title);
+      $('#visualizar #start').text(info.event.start.toLocaleString());
+      $('#visualizar #end').text(info.event.end.toLocaleString());
+      $('#visualizar').modal('show');
     },
 
-    change: function(themeSystem) {
-      calendar.setOption('themeSystem', themeSystem);
+    selectable: true,
+    selectHelper: true,
+    select: function (info) {
+      //alert('Início do Evento: ' + info.start.toLocaleString());
+      $('#cadastrar #start').val(info.start.toLocaleString());
+      $('#cadastrar #end').val(info.end.toLocaleString());
+      $('#cadastrar').modal('show');
     }
-
   });
 
+  calendar.render();
 });
 
 //Máscara de data e hora
