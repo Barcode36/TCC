@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
+
+    <!-- Scrool js-->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <!-- Uso de Bootstrap -->
     <!-- Price Slider Stylesheets -->
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/directory/1-1/vendor/nouislider/nouislider.css">
@@ -229,14 +232,14 @@
     <!-- Corpo Site -->
     <section class="py-6 bg-gray-100">
       <div class="container">
-        <div class="text-center pb-lg-4">
+        <div class="text-center pb-lg-4" data-anime="low">
           <p class="subtitle text-secondary">Uma maneira prática e rápida </p>
           <h2 class="mb-5">Gerenciamento completo de suas atividades</h2>
         </div>
 
         <!-- Primeira Coluna -->
         <div class="row">
-          <div class="col-lg-4 mb-3 mb-lg-0 text-center">
+          <div class="col-lg-4 mb-3 mb-lg-0 text-center" data-anime="left">
             <div class="px-0 px-lg-3">
               <div class="icon-rounded bg-primary-light mb-3">
                 <span style="font-size: 1.8rem; color: tomato;"><i class="fas fa-mobile-alt"></i></span>
@@ -247,7 +250,7 @@
           </div>
 
           <!-- Segunda Coluna -->
-          <div class="col-lg-4 mb-3 mb-lg-0 text-center">
+          <div class="col-lg-4 mb-3 mb-lg-0 text-center" data-anime="top">
             <div class="px-0 px-lg-3">
               <div class="icon-rounded bg-primary-light mb-3">
                 <span style="font-size: 1.8rem; color: tomato;"><i class="fas fa-desktop"></i></span>
@@ -258,7 +261,7 @@
           </div>
 
           <!-- Terceira Coluna -->
-          <div class="col-lg-4 mb-3 mb-lg-0 text-center">
+          <div class="col-lg-4 mb-3 mb-lg-0 text-center" data-anime="rigth">
             <div class="px-0 px-lg-3">
               <div class="icon-rounded bg-primary-light mb-3">
                 <span style="font-size: 1.8rem; color: tomato;"><i class="fab fa-edge"></i></span>
@@ -275,7 +278,7 @@
     <section class="py-6 bg-white">
       <div class="container">
         <div class="row mb-5">
-          <div class="col-md-8">
+          <div class="col-md-8" data-anime="left">
             <p class="subtitle text-primary">Nós lembraremos os seus compromissos!</p>
             <h2>Nossos serviços</h2>
           </div>
@@ -285,12 +288,13 @@
         </div>
 
         <!-- Cards Centaris -->
-        <div class="row">
+        <div class="row" data-anime="low">
           <div class="swiper-container guides-slider">
             <div class="swiper-wrapper pb-5">
 
               <!-- Slides-->
               <!-- Slide 1 -->
+            
               <div class="swiper-slide h-auto px-2">
                 <div class="card card-poster gradient-overlay mb-4 mb-lg-0"><a href="#" class="tile-link"></a><img src="img/ser1.jpg" alt="Card image" class="bg-image">
                   <div class="card-body overlay-content">
@@ -299,6 +303,7 @@
                   </div>
                 </div>
               </div>
+
               <!-- Slide 2 -->
               <div class="swiper-slide h-auto px-2">
                 <div class="card card-poster gradient-overlay mb-4 mb-lg-0"><a href="#" class="tile-link"></a><img src="img/ser2.jpg" alt="Card image" class="bg-image">
@@ -333,207 +338,13 @@
       </div>
     </section>
 
-    <!-- Comentário de Usuários -->
-    <section class="py-6 bg-gray-100"> 
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-8">
-            <p class="subtitle text-secondary">Alguns de nossos parceiros        </p>
-            <h2>Junte-se a nós</h2>
-          </div>
-        </div>
 
-        <!-- Slider main container-->
-        <div data-swiper="{&quot;slidesPerView&quot;:4,&quot;spaceBetween&quot;:20,&quot;loop&quot;:true,&quot;roundLengths&quot;:true,&quot;breakpoints&quot;:{&quot;1200&quot;:{&quot;slidesPerView&quot;:3},&quot;991&quot;:{&quot;slidesPerView&quot;:2},&quot;565&quot;:{&quot;slidesPerView&quot;:1}},&quot;pagination&quot;:{&quot;el&quot;:&quot;.swiper-pagination&quot;,&quot;clickable&quot;:true,&quot;dynamicBullets&quot;:true}}" class="swiper-container swiper-container-mx-negative swiper-init">
-          <!-- Additional required wrapper-->
-          <div class="swiper-wrapper pb-5">
-            <!-- Slides-->
-            <div class="swiper-slide h-auto px-2">
-
-              <!-- place item-->
-              <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay"> <img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room" class="img-fluid"/><a href="detail-rooms.html" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center"><img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/avatar/avatar-0.jpg" alt="Pamela" class="avatar avatar-border-white mr-2"/>
-                        <div class="media-body">Pamela</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right"><a href="javascript: void();" class="card-fav-icon position-relative z-index-40"> 
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1"> </use>
-                        </svg></a></div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title"><a href="detail-rooms.html" class="text-decoration-none text-dark">"Moderno, e fácil de usar"</a></h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">classificou</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-
-
-              <!-- place item-->
-              <div data-marker-id="59c0c8e322f3375db4d89128" class="w-100 h-100">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay"> <img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/photo/photo-1426122402199-be02db90eb90.jpg" alt="Cute Quirky Garden apt, NYC adjacent" class="img-fluid"/><a href="#" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center"><img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/avatar/avatar-7.jpg" alt="John" class="avatar avatar-border-white mr-2"/>
-                        <div class="media-body">John</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right"><a href="javascript: void();" class="card-fav-icon position-relative z-index-40"> 
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1"> </use>
-                        </svg></a></div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title"><a href="detail-rooms.html" class="text-decoration-none text-dark">"Gostei muito, layout maneiro"</a></h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">classificou</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                                  </i>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-
-              <!-- place item-->
-              <div data-marker-id="59c0c8e3a31e62979bf147c9" class="w-100 h-100">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay"> <img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="Modern Apt - Vibrant Neighborhood!" class="img-fluid"/><a href="#" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center"><img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/avatar/avatar-8.jpg" alt="Julie" class="avatar avatar-border-white mr-2"/>
-                        <div class="media-body">Julie</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right"><a href="javascript: void();" class="card-fav-icon position-relative z-index-40"> 
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1"> </use>
-                        </svg></a></div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title"><a href="detail-rooms.html" class="text-decoration-none text-dark">"Me ajudou muito no dia-a-dia, perfeito!"</a></h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">classificou</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                                  </i><i class="fa fa-star text-gray-300">                                  </i>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-
-              <!-- place item-->
-              <div data-marker-id="59c0c8e3503eb77d487e8082" class="w-100 h-100">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay"> <img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/photo/photo-1494526585095-c41746248156.jpg" alt="Sunny Private Studio-Apartment" class="img-fluid"/><a href="#" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center"><img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/avatar/avatar-9.jpg" alt="Barbora" class="avatar avatar-border-white mr-2"/>
-                        <div class="media-body">Barbora</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right"><a href="javascript: void();" class="card-fav-icon position-relative z-index-40"> 
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1"> </use>
-                        </svg></a></div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title"><a href="detail-rooms.html" class="text-decoration-none text-dark">"Indico sempre para quem encontro!"</a></h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">calssificou</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                                  </i>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-
-              <!-- place item-->
-              <div data-marker-id="59c0c8e39aa2eed0626e485d" class="w-100 h-100">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay"> <img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/photo/photo-1522771739844-6a9f6d5f14af.jpg" alt="Mid-Century Modern Garden Paradise" class="img-fluid"/><a href="#" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center"><img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/avatar/avatar-10.jpg" alt="Jack" class="avatar avatar-border-white mr-2"/>
-                        <div class="media-body">Jack</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right"><a href="javascript: void();" class="card-fav-icon position-relative z-index-40"> 
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1"> </use>
-                        </svg></a></div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title"><a href="detail-rooms.html" class="text-decoration-none text-dark">"Top! Pode confiar...!"</a></h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">classificou</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-
-              <!-- place item-->
-              <div data-marker-id="59c0c8e39aa2edasd626e485d" class="w-100 h-100">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay"> <img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/photo/photo-1488805990569-3c9e1d76d51c.jpg" alt="Brooklyn Life, Easy to Manhattan" class="img-fluid"/><a href="#" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center"><img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/avatar/avatar-11.jpg" alt="Stuart" class="avatar avatar-border-white mr-2"/>
-                        <div class="media-body">Stuart</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right"><a href="javascript: void();" class="card-fav-icon position-relative z-index-40"> 
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1"> </use>
-                        </svg></a></div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title"><a href="detail-rooms.html" class="text-decoration-none text-dark">"Ótimo..."</a></h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">classificou</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                                  </i>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-    </section>
 
 
     <!-- Seção Divisora-->
     <section class="py-7 position-relative dark-overlay"><img src="img/div.jpg" alt="" class="bg-image">
       <div class="container">
-        <div class="overlay-content text-white py-lg-5">
+        <div class="overlay-content text-white py-lg-5" data-anime="rigth">
           <h3 class="display-3 font-weight-bold text-serif text-shadow mb-5">Quer que lembremos para você?</h3><a href="#" class="btn btn-light">Cadastre-se</a>
         </div>
       </div>
@@ -542,13 +353,13 @@
     <!-- Idealizadores -->
     <section class="py-7">
       <div class="container">
-        <div class="text-center">
+        <div class="text-center" data-anime="low">
           <p class="subtitle text-primary">Idealizadores</p>
           <h2 class="mb-5">Equipe técnica do projeto</h2>
         </div>
 
         <!-- Slider main container-->
-        <div class="swiper-container testimonials-slider testimonials">
+        <div class="swiper-container testimonials-slider testimonials" data-anime="top">
 
           <!-- Additional required wrapper-->
           <div class="swiper-wrapper pt-2 pb-5">
@@ -656,7 +467,7 @@
   -->
     <!-- Fotos -->
     <section>
-      <div class="container-fluid px-0">
+      <div class="container-fluid px-0" data-anime="top">
         <div class="swiper-container instagram-slider">
           <div class="swiper-wrapper">
             <div class="z"><a href="#"><div class=""><img src="https://d19m59y37dris4.cloudfront.net/directory/1-1/img/instagram/instagram-1.jpg" alt="" class="img-fluid hover-scale"></a></div></div>
@@ -789,5 +600,6 @@
     <script>var basePath = ''</script>
     <!-- Main Theme JS file    -->
     <script src="js/theme.js"></script>
+    <script src="js/scroll.js"></script>
   </body>
 </html>
