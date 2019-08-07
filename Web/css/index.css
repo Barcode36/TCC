@@ -1,7 +1,7 @@
 /* animação */
 [data-anime]{
     opacity: 0;
-    transition: .5s;
+    transition: .4s;
 }
 
 [data-anime= "left"]{
