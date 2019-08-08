@@ -3,29 +3,71 @@ body {
     font-size: 14px;
 }
 
+.menu-superior {
+    font-size: 16px;
+    box-shadow: 0px 0px 10px #666;
+
+    padding: 1px 15px 1px 15px;
+}
+
+.img-perfil {
+    width: 35px;
+    height: 35px;
+
+    border: solid 1px black;
+    border-radius: 50%;
+
+    margin-right: 10px;
+}
+
+.perfil-inline {
+    padding-top: 5px;
+    display: flex;
+}
+
 #calendar{
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
 #wrap {
-    width: 1100px;
+    width: 100%;
+    height: 65vw;
     margin: 0 auto;
+
+    background: linear-gradient(white,white,rgb(230, 230, 230));
+}
+
+.espaco {
+    padding-left: 3px;
+}
+
+.txt-sair {
+    color: rgb(214, 0, 0);
+    text-decoration: none;
+}
+
+.txt-sair:hover {
+    color: white;
+    text-decoration: none;
 }
 
 .clear { clear: both }
 
 #calendar {
     float: right;
-    width: 900px;
+    width: 70%;
     border-style: solid;
     border-width: 1px;
     background-color: rgba(0,128,0, 0.3);
+
+    padding: 2%;
+    margin: 0 2% 0 0;
 }
 
 #external-events {
     float: left;
-    width: 150px;
-    padding: 0 10px;
+    width: 25%;
+    padding: 0 2%;
     border: 1px solid #ccc;
     background: #eee;
     text-align: left;
@@ -55,10 +97,10 @@ body {
 
 
 /* Efeito Parallax */
-.content-site{
+/* .content-site{
 	padding-top: 45%;
 	padding-bottom: 5%;
-}
+} */
 
 .img-site{
 	background-image: url(../../../img/bgFootAgenda.jpg);
@@ -74,10 +116,12 @@ body {
 	align-self: flex-end;
 	width: 100%;
 	padding: 1.5em 0 0 0;
-	color: rgba(255, 255, 255, 0.75);
+	color: rgba(54, 54, 54, 0.75);
 	cursor: default;
     text-align: center;
-    background-color: grey;
+    background-color: rgb(230, 230, 230);
+
+    box-shadow: 0px -3px 10px black;
 }
 
 #footer .copyright {

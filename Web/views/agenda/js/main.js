@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
     },    
+    aspectRatio: 1.3,
     navLinks: true, 
     editable: true,
     eventLimit: true, 

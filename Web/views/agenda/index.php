@@ -41,10 +41,13 @@
 <body>
 
     <!-- Barra de Identificação e Logout -->
-    <nav class="navbar fixed-top navbar-light bg-light">
-        <span class="navbar-text">Olá, <b><?php echo $_SESSION['nome'];?></b></span>
-        <form class="form-inline ">
-            <button class="btn btn-sm btn-outline-success" type="submit"><i class="fas fa-sign-out-alt"><a href="logout.php">Sair</a></i></button>
+    <nav class="navbar fixed-top navbar-light bg-light menu-superior">
+        <div class="perfil-inline">    
+            <div class="img-perfil"></div>
+            <span class="navbar-text">Olá, <b><?php echo $_SESSION['nome'];?></b></span>
+        </div>
+        <form class="form-inline">
+        <a href="logout.php" class="txt-sair"><button class="btn btn-sm btn-outline-danger" type="submit"><i class="fas fa-sign-out-alt"><span class="espaco">Sair</span></i></button></a>
         </form>
     </nav>
     
