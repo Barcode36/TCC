@@ -1,0 +1,28 @@
+
+
+.mainFxmlClass {
+
+}
+.butoon{
+    -fx-background-color: #FFF;
+}
+.butoon:hover{
+    -fx-background-color: #E0E0E0;
+}
+
+.butoonx{
+    -fx-background-color: #FFF;
+}
+.butoonx:hover{
+    -fx-background-color: #FD4E4E;
+}
+
+.fotoPerfil{
+    -fx-background-image: url("../img/Elias1.png");
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-radius: 70px;
+    -fx-border-radius: 70px;
+    
+}
+
