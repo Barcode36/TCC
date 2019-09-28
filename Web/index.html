@@ -122,7 +122,6 @@
                             <li class="megamenu-list-item"><a href="#" class="megamenu-list-link">Alexandre Fernandes   </a></li>
                             <li class="megamenu-list-item"><a href="#" class="megamenu-list-link">Elias Pedro   </a></li>
                             <li class="megamenu-list-item"><a href="#" class="megamenu-list-link">Elzio Maia   </a></li>
-                            <li class="megamenu-list-item"><a href="#" class="megamenu-list-link">Júlio César   </a></li>
                           </ul>
                         </div>
 
@@ -566,7 +565,6 @@
               <div class="testimonial card rounded-lg shadow border-0">
                 <div class="testimonial-avatar"><img src="img/avatar1.jpg" alt="..." class="img-fluid"></div>
                 <div class="text">
-                  <!-- <div class="testimonial-quote"><i class="fas fa-quote-right"></i></div> -->
                   <p class="testimonial-text">Gerente de projeto e o cara que se irrita com a produção e o calendário!</p><strong>Alexandre Fernandes</strong>
                 </div>
               </div>
@@ -591,8 +589,9 @@
                 </div>
               </div>
             </div>
-
-            <!-- Júlio -->
+            
+            
+            <!-- Júlio --><!--
             <div class="swiper-slide px-3">
               <div class="testimonial card rounded-lg shadow border-0">
                 <div class="testimonial-avatar"><img src="img/avatar4.jpg" alt="..." class="img-fluid"></div>
@@ -600,7 +599,7 @@
                   <p class="testimonial-text">Responsável pela produção Desktop e atleta de bicicross nas horas vagas</p><strong>Júlio César</strong>
                 </div>
               </div>
-            </div>
+            </div>-->
 
           </div>
           <div class="swiper-pagination">     </div>
@@ -720,7 +719,6 @@
                 <li><a href="#" class="text-muted">Alexandre</a></li>
                 <li><a href="#" class="text-muted">Elias</a></li>
                 <li><a href="#" class="text-muted">Elzio</a></li>
-                <li><a href="#" class="text-muted">Júlio</a></li>
                 <li><a href="#" class="text-muted">God<span class="badge badge-info ml-1">New</span></a></li>
               </ul>
             </div>
@@ -770,10 +768,10 @@
           ajax.open("GET", path, true);
           ajax.send();
           ajax.onload = function(e) {
-          var div = document.createElement("div");
-          div.className = 'd-none';
-          div.innerHTML = ajax.responseText;
-          document.body.insertBefore(div, document.body.childNodes[0]);
+            var div = document.createElement("div");
+            div.className = 'd-none';
+            div.innerHTML = ajax.responseText;
+            document.body.insertBefore(div, document.body.childNodes[0]);
           }
       }
       injectSvgSprite('https://demo.bootstrapious.com/directory/1-1/icons/orion-svg-sprite.svg'); 
