@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="panePai" prefHeight="521.0" prefWidth="980.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.home.ViewHomeController">
+<AnchorPane id="AnchorPane" fx:id="panePai" prefHeight="521.0" prefWidth="1023.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.home.ViewHomeController">
    <children>
       <AnchorPane fx:id="paneHome" prefHeight="445.0" prefWidth="935.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="462.0" prefWidth="264.0" style="-fx-background-color: #0747ae;;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane layoutY="-6.0" prefHeight="469.0" prefWidth="64.0" style="-fx-background-color: #0741ae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane layoutY="-6.0" prefHeight="469.0" prefWidth="56.0" style="-fx-background-color: #0741ae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <JFXButton accessibleRole="PARENT" alignment="CENTER" blendMode="SRC_ATOP" cache="true" contentDisplay="CENTER" ellipsisString="" focusTraversable="false" layoutY="366.0" prefHeight="40.0" prefWidth="53.0" text="." textFill="#0747ae" textOverrun="CLIP" wrapText="true" />
                         <JFXButton fx:id="btnAdd" accessibleRole="PARENT" alignment="CENTER" blendMode="SRC_ATOP" cache="true" contentDisplay="CENTER" ellipsisString="" focusTraversable="false" layoutX="1.0" layoutY="102.0" onAction="#addPane" prefHeight="40.0" prefWidth="56.0" text="  " textFill="WHITE" wrapText="true">
@@ -169,14 +169,18 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Separator layoutX="264.0" layoutY="55.0" prefHeight="2.0" prefWidth="514.0" AnchorPane.leftAnchor="265.0" AnchorPane.rightAnchor="0.0" />
+            <Separator layoutX="264.0" layoutY="55.0" prefHeight="2.0" prefWidth="514.0" AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="0.0" />
             <AnchorPane layoutX="276.0" layoutY="7.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="39.0" styleClass="fotoPerfil" stylesheets="@ViewHomeCss.css" />
             <Label layoutX="436.0" layoutY="128.0" prefHeight="30.0" prefWidth="282.0" text="Elias Pedro Ribeiro">
                <font>
                   <Font name="Cambria Italic" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="332.0" layoutY="18.0" prefHeight="3.0" prefWidth="156.0" text="Elias Pedro Ribeiro">
+            <ImageView fitHeight="130.0" fitWidth="132.0" layoutX="296.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Elias1.png" />
+               </image></ImageView>
+            <Label layoutX="331.0" layoutY="18.0" prefHeight="3.0" prefWidth="156.0" text="Elias Pedro Ribeiro">
                <font>
                   <Font name="Cambria" size="14.0" />
                </font>
@@ -210,7 +214,6 @@
                </image>
             </ImageView>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="564.0" layoutY="185.0" prefHeight="17.0" prefWidth="27.0" text="3" />
-            <AnchorPane layoutX="296.0" layoutY="110.0" prefHeight="136.0" prefWidth="124.0" style="-fx-background-radius: 70;" styleClass="fotoPerfil" stylesheets="@ViewHomeCss.css" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="addPane" cache="true" depthTest="DISABLE" prefHeight="445.0" prefWidth="777.0" style="-fx-background-color: #fff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

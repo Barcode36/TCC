@@ -16,7 +16,9 @@ public class TCC extends Application {
     
     private static Scene rootHomeR;
     private static Scene rootAgendaR;
+    private static Scene rootCadastroEventosR;
     private static Stage stage;
+    
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -28,15 +30,21 @@ public class TCC extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("login_cadastro/Login_Cadastro.fxml"));
         Scene scene = new Scene(root); 
         
-        //Home
+        // View Home
         Parent rootHome = FXMLLoader.load(getClass().getResource("home/ViewHome.fxml"));
-        rootHomeR = new Scene(rootHome, 980, 521);
+        rootHomeR = new Scene(rootHome, 1029, 547);
          
-        //Agenda 
+        //View Agenda 
         Parent rootAgenda = FXMLLoader.load(getClass().getResource("agenda/Agenda.fxml"));
-        rootAgendaR = new Scene(rootAgenda, 980, 521);
+        rootAgendaR = new Scene(rootAgenda, 1029, 547);
+        
+        //Cadastro de eventos
+        
+        Parent rootCadastroEventos = FXMLLoader.load(getClass().getResource("cadastro_Eventos/Cadastro_Eventos.fxml"));
+        rootCadastroEventosR = new Scene(rootCadastroEventos, 1029, 547);
         
         stage.setScene(scene);
+        stage.setScene(rootAgendaR);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
@@ -64,13 +72,13 @@ public class TCC extends Application {
     public static void maximizar(){
         
    
-        if(stage.getHeight() <= 521){
+        if(stage.getHeight() <= 547){
             stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
             stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
             stage.centerOnScreen();
         }else{
-            stage.setHeight(521);
-            stage.setWidth(980);
+            stage.setHeight(547);
+            stage.setWidth(1029);
             stage.centerOnScreen();
         } 
     }
