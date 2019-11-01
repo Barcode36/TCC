@@ -4,8 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.ImageViewBuilder;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -44,7 +42,7 @@ public class TCC extends Application {
         rootCadastroEventosR = new Scene(rootCadastroEventos, 1029, 547);
         
         stage.setScene(scene);
-        stage.setScene(rootAgendaR);
+        stage.setScene(rootHomeR);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
