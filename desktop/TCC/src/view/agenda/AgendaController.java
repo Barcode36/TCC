@@ -2,24 +2,20 @@ package view.agenda;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import java.awt.Color;
-import java.awt.Paint;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.OverrunStyle;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javax.swing.JOptionPane;
 import view.TCC;
+import static view.TCC.telaRootCadastroEventos;
 
 /**
  * FXML Controller class
@@ -28,7 +24,7 @@ import view.TCC;
  */
 public class AgendaController implements Initializable {
 
-    
+
     @FXML
     private AnchorPane panePai;
 
@@ -227,9 +223,16 @@ public class AgendaController implements Initializable {
     @FXML
     private AnchorPane paneCorTest;
 
-   
+   //codigo do Usuário
+   private int codigoUsuario;
     
-    
+    public  int getCodigoUsuario() {
+        return codigoUsuario;
+    }
+    public  void setCodigoUsuario(int aCodigoUsuario) {
+        codigoUsuario = aCodigoUsuario;
+    }
+    ///////
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -285,7 +288,28 @@ public class AgendaController implements Initializable {
     void vaiViewPerfil(ActionEvent event) {
         TCC.telaRootHome();
     }
- 
+    
+    
+    public void verificaEventodoDia(){
+        /*URL rest;
+        try{
+            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/buscar/1");
+        }*/
+    }
+    
+    //Muda para a scene de criar eventos
+    @FXML
+    void mudaTelaCadastroEventos(ActionEvent event) {
+        telaRootCadastroEventos();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     //Calendario
     
@@ -766,6 +790,8 @@ public class AgendaController implements Initializable {
         JFXButton botao =  (JFXButton) event.getSource();
         String i = "RED";
         paneCorTest.setStyle("-fx-background-color: "+ i +";");
+        TCC tcc = new TCC();
+        System.out.println(tcc.pegarCodigo());
     }
     
     

@@ -15,7 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +25,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
-import model.Verifica;
+import model.Usuario;
 import view.TCC;
 
 /**
@@ -35,8 +35,7 @@ import view.TCC;
  */
 public class Login_CadastroController implements Initializable {
 
-   
-    
+ 
     @FXML
     private AnchorPane paneCadastro;
 
@@ -90,6 +89,17 @@ public class Login_CadastroController implements Initializable {
     
     
     
+    //Responsavel para armazenar o Codigo do Usuário ao fazer login
+    private static int codigoUsuario;
+    
+    public static int getCodigoUsuario() {
+        return codigoUsuario;
+    }
+    public static void setCodigoUsuario(int aCodigoUsuario) {
+        codigoUsuario = aCodigoUsuario;
+    }
+    ///////////
+    
     
     @FXML
     void login(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -114,9 +124,18 @@ public class Login_CadastroController implements Initializable {
             JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
             JsonArray jsonArray = js.getAsJsonArray("dados");
             
-            
+            //verifica se o usuário existe 
             if(jsonArray.size() > 0){
-                 TCC.telaRootHome(); 
+                
+                //pega o codigo do usuário
+                ArrayList<Usuario> usuario = null;
+                
+                Type usuarioListaType = new TypeToken<ArrayList<Usuario>>(){}.getType();
+                usuario = gson.fromJson(jsonArray, usuarioListaType);
+                
+                codigoUsuario = usuario.get(0).getCodigo();
+
+                TCC.telaRootHome(codigoUsuario); 
             }else{
                 Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("");

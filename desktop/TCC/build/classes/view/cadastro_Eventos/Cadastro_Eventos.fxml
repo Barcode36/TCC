@@ -6,6 +6,8 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -20,7 +22,18 @@
          </font>
       </Label>
       <JFXTextField layoutX="144.0" layoutY="43.0" prefHeight="25.0" prefWidth="238.0" unFocusColor="#bbaeae" />
-      <AnchorPane prefHeight="552.0" prefWidth="64.0" style="-fx-background-color: #1b6cd7;" />
+      <AnchorPane prefHeight="552.0" prefWidth="64.0" style="-fx-background-color: #1b6cd7;">
+         <children>
+            <JFXButton layoutX="7.0" layoutY="14.0" onAction="#mudaTelaAgenda" prefHeight="37.0" prefWidth="46.0">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children></AnchorPane>
       <AnchorPane layoutX="523.0" layoutY="312.0" prefHeight="69.0" prefWidth="107.0" style="-fx-background-color: #eae5e5;">
          <children>
             <Label layoutX="37.0" layoutY="1.0" text="min" textFill="#909090">
@@ -75,12 +88,12 @@
          </font>
       </Label>
       <AnchorPane layoutX="675.0" prefHeight="552.0" prefWidth="64.0" style="-fx-background-color: #1b6cd7;" />
-      <JFXTextField alignment="CENTER" layoutX="184.0" layoutY="94.0" prefHeight="37.0" prefWidth="89.0" promptText="Digite o CEP" unFocusColor="#bbaeae">
+      <JFXTextField fx:id="txtCEP" alignment="CENTER" layoutX="184.0" layoutY="94.0" onAction="#buscaEndereco" prefHeight="37.0" prefWidth="89.0" promptText="Digite o CEP" unFocusColor="#bbaeae">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField layoutX="372.0" layoutY="94.0" prefHeight="37.0" prefWidth="257.0" unFocusColor="#bbaeae">
+      <JFXTextField fx:id="txtEndereco" layoutX="372.0" layoutY="94.0" prefHeight="37.0" prefWidth="257.0" unFocusColor="#bbaeae">
          <font>
             <Font size="16.0" />
          </font>
@@ -116,7 +129,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <JFXButton layoutX="99.0" layoutY="497.0" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #1b6cd7;" text="Cadastrar" textFill="WHITE">
+      <JFXButton layoutX="99.0" layoutY="497.0" onAction="#cadastrarEventos" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #1b6cd7;" text="Cadastrar" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
