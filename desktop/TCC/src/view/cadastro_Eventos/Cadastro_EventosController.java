@@ -1,6 +1,7 @@
 
 package view.cadastro_Eventos;
 
+<<<<<<< HEAD
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -20,6 +21,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import model.Endereco;
 import static view.TCC.telaRootAgenda;
+=======
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 
 /**
  * FXML Controller class
@@ -28,6 +34,7 @@ import static view.TCC.telaRootAgenda;
  */
 public class Cadastro_EventosController implements Initializable {
 
+<<<<<<< HEAD
     
     
     @FXML
@@ -116,5 +123,14 @@ public class Cadastro_EventosController implements Initializable {
     
     
     
+=======
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     
 }

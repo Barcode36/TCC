@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
-  
+  var calendarEl = document.getElementById('calendar'); 
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
     locale: 'pt-br',
@@ -9,12 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
       left: 'prev,next, today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-    },    
+    },
+
     aspectRatio: 1.3,
     navLinks: true, 
     editable: true,
     eventLimit: true, 
     events: 'list_eventos.php',
+
     extraParams: function () {
       return {
         cachebuster: new Date().valueOf()
@@ -24,23 +25,29 @@ document.addEventListener('DOMContentLoaded', function() {
     eventClick: function (info) {
       info.jsEvent.preventDefault();
 
-      $('#visualizar #id').text(info.event.id);
-      $('#visualizar #title').text(info.event.title);
-      $('#visualizar #start').text(info.event.start.toLocaleString());
-      $('#visualizar #end').text(info.event.end.toLocaleString());
+      $('#visualizar #codigo').val(info.event.id);
+      $('#visualizar #titulo').text(info.event.title);
+      $('#visualizar #titulo').val(info.event.title);
+      $('#visualizar #descricao').text(info.event.extendedProps.description);
+      $('#visualizar #descricao').val(info.event.extendedProps.description);
+      $('#visualizar #data_ini').text(info.event.start.toLocaleString());
+      $('#visualizar #start').val(info.event.start.toLocaleString());
+      $('#visualizar #data_fim').text(info.event.end.toLocaleString());
+      $('#visualizar #end').val(info.event.end.toLocaleString());
+      $('#visualizar #endereco').text(info.event.extendedProps.local);
+      $('#visualizar #endereco').val(info.event.extendedProps.local);
       $('#visualizar').modal('show');
     },
 
     selectable: true,
     selectHelper: true,
+
     select: function (info) {
-      //alert('Início do Evento: ' + info.start.toLocaleString());
       $('#cadastrar #start').val(info.start.toLocaleString());
       $('#cadastrar #end').val(info.end.toLocaleString());
       $('#cadastrar').modal('show');
     }
   });
-
   calendar.render();
 });
 
@@ -49,7 +56,7 @@ function DataHora(evento, objeto){
   var keypress=(window.event)?event.keyCode:evento.which;
   campo = eval (objeto);
   if (campo.value == '00/00/0000 00:00:00'){
-    campo.value=""
+    campo.value = ""
   }
  
   caracteres = '0123456789';

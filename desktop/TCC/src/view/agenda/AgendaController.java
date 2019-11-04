@@ -2,20 +2,37 @@ package view.agenda;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+<<<<<<< HEAD
+=======
+import java.awt.Color;
+import java.awt.Paint;
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+<<<<<<< HEAD
+=======
+import java.util.Locale;
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+<<<<<<< HEAD
 import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 import view.TCC;
 import static view.TCC.telaRootCadastroEventos;
+=======
+import javafx.scene.control.OverrunStyle;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javax.swing.JOptionPane;
+import view.TCC;
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 
 /**
  * FXML Controller class
@@ -24,7 +41,11 @@ import static view.TCC.telaRootCadastroEventos;
  */
 public class AgendaController implements Initializable {
 
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     @FXML
     private AnchorPane panePai;
 
@@ -223,6 +244,7 @@ public class AgendaController implements Initializable {
     @FXML
     private AnchorPane paneCorTest;
 
+<<<<<<< HEAD
    //codigo do Usuário
    private int codigoUsuario;
     
@@ -243,6 +265,9 @@ public class AgendaController implements Initializable {
     
   
     
+=======
+   
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
    //Métodos minímizar, maximizar e fechar
    @FXML
    void maximizar(ActionEvent event) {
@@ -289,6 +314,7 @@ public class AgendaController implements Initializable {
         TCC.telaRootHome();
     }
     
+<<<<<<< HEAD
     
     public void verificaEventodoDia(){
         /*URL rest;
@@ -310,6 +336,9 @@ public class AgendaController implements Initializable {
     
     
     
+=======
+
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     
     //Calendario
     
@@ -790,8 +819,11 @@ public class AgendaController implements Initializable {
         JFXButton botao =  (JFXButton) event.getSource();
         String i = "RED";
         paneCorTest.setStyle("-fx-background-color: "+ i +";");
+<<<<<<< HEAD
         TCC tcc = new TCC();
         System.out.println(tcc.pegarCodigo());
+=======
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     }
     
     
@@ -804,5 +836,20 @@ public class AgendaController implements Initializable {
             
         }
     }
+<<<<<<< HEAD
       
+=======
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        iniciaCalendario();
+        calendario();
+    }    
+    
+
+    
+    
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 }

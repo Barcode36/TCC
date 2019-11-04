@@ -1,5 +1,6 @@
 package view.login_cadastro;
 
+<<<<<<< HEAD
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -16,6 +17,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+=======
+import coltrol.ControlaDadosCadastro;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +35,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
+<<<<<<< HEAD
 import model.Usuario;
+=======
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 import view.TCC;
 
 /**
@@ -35,7 +48,13 @@ import view.TCC;
  */
 public class Login_CadastroController implements Initializable {
 
+<<<<<<< HEAD
  
+=======
+    ControlaDadosCadastro controle = new ControlaDadosCadastro();
+   
+    
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     @FXML
     private AnchorPane paneCadastro;
 
@@ -89,6 +108,7 @@ public class Login_CadastroController implements Initializable {
     
     
     
+<<<<<<< HEAD
     //Responsavel para armazenar o Codigo do Usuário ao fazer login
     private static int codigoUsuario;
     
@@ -137,6 +157,19 @@ public class Login_CadastroController implements Initializable {
 
                 TCC.telaRootHome(codigoUsuario); 
             }else{
+=======
+    
+    @FXML
+    void login(ActionEvent event) throws SQLException, ClassNotFoundException {
+        boolean inseriu = false;
+        
+        try{
+            inseriu = controle.login(this.txtUsuario.getText(), this.txtSenha.getText());
+            if(inseriu){
+                TCC.telaRootHome();
+                
+            }else if(!inseriu){
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
                 Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("");
                 alert.setHeaderText("Usuário ou Senha inválido!");
@@ -144,6 +177,7 @@ public class Login_CadastroController implements Initializable {
 
                 alert.showAndWait();
             }
+<<<<<<< HEAD
             
         }catch(MalformedURLException ex){
             System.out.println("Erro: " + ex);
@@ -154,10 +188,18 @@ public class Login_CadastroController implements Initializable {
     
     
     
+=======
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }  
+    }
+    
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     @FXML
     void cadastrar(ActionEvent event){
 
         if(verificaCampos()){
+<<<<<<< HEAD
             
             URL rest;
             try{
@@ -209,6 +251,11 @@ public class Login_CadastroController implements Initializable {
             
             /*try{
                 cadastro = controle.insereCadastro(, txtSenha1.getText(), , txtEmail.getText(), txtTelefone.getText());
+=======
+            boolean cadastro = false;
+            try{
+                cadastro = controle.insereCadastro(txtUsuario.getText(), txtSenha1.getText(), txtNome.getText(), txtEmail.getText(), txtTelefone.getText());
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
             }catch(Exception ex){
                 ex.printStackTrace();
             }
@@ -217,7 +264,11 @@ public class Login_CadastroController implements Initializable {
                 alert.setTitle("");
                 alert.setHeaderText("Cadastro efetuado com sucesso!");
                 alert.showAndWait();
+<<<<<<< HEAD
             }*/
+=======
+            }
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
         }
         
     }
@@ -310,7 +361,11 @@ public class Login_CadastroController implements Initializable {
             return false;
         }else if(numeros < 2){
             Alert alert = new Alert(AlertType.WARNING);
+<<<<<<< HEAD
             alert.setHeaderText("É necessário no mínimo dois caractere númerico!");
+=======
+            alert.setHeaderText("É necessário no mínimo um caractere númerico!");
+>>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
             alert.showAndWait();
             return false;
         }
