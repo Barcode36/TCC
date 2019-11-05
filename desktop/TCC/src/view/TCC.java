@@ -7,10 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-<<<<<<< HEAD
 import view.login_cadastro.Login_CadastroController;
-=======
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 
 
 
@@ -22,7 +19,6 @@ public class TCC extends Application {
     private static Stage stage;
     
     
-<<<<<<< HEAD
     //Codigo do usuário
     private static int codigoUsuario;
 
@@ -35,8 +31,6 @@ public class TCC extends Application {
     
     
     
-=======
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     @Override
     public void start(Stage stage) throws Exception {
     
@@ -58,22 +52,14 @@ public class TCC extends Application {
         //Cadastro de eventos
         
         Parent rootCadastroEventos = FXMLLoader.load(getClass().getResource("cadastro_Eventos/Cadastro_Eventos.fxml"));
-<<<<<<< HEAD
         rootCadastroEventosR = new Scene(rootCadastroEventos, 737, 552);
         
         stage.setScene(scene);
         //stage.setScene(rootCadastroEventosR);
-=======
-        rootCadastroEventosR = new Scene(rootCadastroEventos, 1029, 547);
-        
-        stage.setScene(scene);
-        stage.setScene(rootHomeR);
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 
-<<<<<<< HEAD
     //Métodos para a troca de Scene 
     
     public static void telaRootHome(int codgigoUsuario){
@@ -90,20 +76,11 @@ public class TCC extends Application {
     }
     
     
-=======
-    //Métodos para a troca de Scene
-    public static void telaRootHome(){
-        stage.setScene(TCC.rootHomeR);
-        stage.centerOnScreen();
-    }
-    
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     public static void telaRootAgenda(){
         stage.setScene(TCC.rootAgendaR);
         stage.centerOnScreen();
     }
     
-<<<<<<< HEAD
     public static void telaRootCadastroEventos(){
         stage.setScene(rootCadastroEventosR);
         stage.centerOnScreen();
@@ -118,10 +95,6 @@ public class TCC extends Application {
     }
 
  
-=======
-    
-    
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     
     //Métodos minímizar, maximizar efechar
     

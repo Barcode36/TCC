@@ -2,37 +2,30 @@ package view.agenda;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-<<<<<<< HEAD
-=======
-import java.awt.Color;
-import java.awt.Paint;
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-<<<<<<< HEAD
-=======
-import java.util.Locale;
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
+import java.util.Iterator;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-<<<<<<< HEAD
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
+import model.EventPers;
+import model.TabelaEventos;
 import view.TCC;
 import static view.TCC.telaRootCadastroEventos;
-=======
-import javafx.scene.control.OverrunStyle;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javax.swing.JOptionPane;
-import view.TCC;
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
+
 
 /**
  * FXML Controller class
@@ -41,11 +34,7 @@ import view.TCC;
  */
 public class AgendaController implements Initializable {
 
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     @FXML
     private AnchorPane panePai;
 
@@ -243,8 +232,18 @@ public class AgendaController implements Initializable {
     
     @FXML
     private AnchorPane paneCorTest;
+    
+    @FXML
+    private TableView<EventPers> tabelaEventosDoDia;
+    
+    @FXML
+    private TableColumn<EventPers, String> tbcTitulo;
+    
+    
 
-<<<<<<< HEAD
+    
+    
+    
    //codigo do Usuário
    private int codigoUsuario;
     
@@ -256,18 +255,20 @@ public class AgendaController implements Initializable {
     }
     ///////
     
+
+    
+    
+    
+  
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         iniciaCalendario();
         calendario();
-    }    
+    } 
     
-  
     
-=======
-   
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
    //Métodos minímizar, maximizar e fechar
    @FXML
    void maximizar(ActionEvent event) {
@@ -314,14 +315,46 @@ public class AgendaController implements Initializable {
         TCC.telaRootHome();
     }
     
-<<<<<<< HEAD
     
-    public void verificaEventodoDia(){
-        /*URL rest;
+    /*public void verificaEventodoDia(){
+        URL rest;
+        TCC usuario = new TCC();
         try{
-            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/buscar/1");
-        }*/
-    }
+            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/buscar/" + usuario.pegarCodigo());
+            HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
+            
+            
+            
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
+            StringBuilder retorno = new StringBuilder();
+            String linha;
+            
+            while((linha = entrada.readLine()) != null){
+                retorno.append(linha);
+            }
+            entrada.close();
+            conexao.disconnect();
+            
+            System.out.println(retorno);
+            
+            
+            Gson gson = new Gson();
+            JsonObject jso = gson.fromJson(retorno.toString(), JsonObject.class);
+            JsonArray jsonArray = jso.getAsJsonArray("dados");
+            
+            ArrayList<EventPers> dadosEventos = null;
+            
+            Type typeDadosEventos = new TypeToken<ArrayList<EventPers>>(){}.getType();
+            dadosEventos = gson.fromJson(jsonArray, typeDadosEventos);
+            
+            
+            
+            
+        }catch(IOException ex){
+            System.out.println("ERRO: " + ex);
+        }
+    }*/
+    
     
     //Muda para a scene de criar eventos
     @FXML
@@ -336,9 +369,6 @@ public class AgendaController implements Initializable {
     
     
     
-=======
-
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
     
     //Calendario
     
@@ -819,11 +849,72 @@ public class AgendaController implements Initializable {
         JFXButton botao =  (JFXButton) event.getSource();
         String i = "RED";
         paneCorTest.setStyle("-fx-background-color: "+ i +";");
-<<<<<<< HEAD
         TCC tcc = new TCC();
         System.out.println(tcc.pegarCodigo());
-=======
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
+        
+        
+        EventPers eventos = new EventPers();
+        ArrayList<EventPers> eventosUsuario = null;
+        eventosUsuario = eventos.buscaEventosUsuario();
+        
+        System.out.println(eventosUsuario.get(0).getTitulo());
+        System.out.println(eventosUsuario.get(0).getCod_local());
+        
+    }
+    
+    
+    
+    
+    
+    private ObservableList<TabelaEventos> listaEvento = FXCollections.observableArrayList();//Para manipular a tabela 
+    @FXML
+    public void eventosdoDia(ActionEvent event) {
+        
+        JFXButton botao =  (JFXButton) event.getSource();
+        
+        if(botao.getText() != ""){
+            initTable();   
+        }  
+    }
+    public void initTable(){
+        
+        tbcTitulo.setCellValueFactory(new PropertyValueFactory<EventPers, String>("Tutulo"));
+        
+        if(!listaEvento.isEmpty()){
+           listaEvento.clear();
+        }
+  
+        tabelaEventosDoDia.setItems(atualizaTabela());
+        getListaEvento();
+        
+    }
+    
+    public ObservableList<EventPers> atualizaTabela(){
+        EventPers eventos = new EventPers();
+        ArrayList<EventPers> eventosUsuario = null;
+        eventosUsuario = eventos.buscaEventosUsuario();
+        
+       
+      
+        return FXCollections.observableArrayList(eventosUsuario);
+    } 
+    public ObservableList<TabelaEventos> getListaEvento(){
+        
+        EventPers eventos = new EventPers();
+        ArrayList<EventPers> eventosUsuario = null;
+        eventosUsuario = eventos.buscaEventosUsuario();
+  
+            
+        Iterator<EventPers> it = eventosUsuario.iterator();
+
+        while(it.hasNext()){
+            EventPers event = (EventPers) it.next();
+            listaEvento.add(new TabelaEventos(event.getTitulo()));
+        }
+        
+        
+        System.out.println(listaEvento);
+        return listaEvento;
     }
     
     
@@ -836,20 +927,5 @@ public class AgendaController implements Initializable {
             
         }
     }
-<<<<<<< HEAD
       
-=======
-    
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        iniciaCalendario();
-        calendario();
-    }    
-    
-
-    
-    
->>>>>>> 7b319896efdbf0c1b4f08f9505e9e01422a906e5
 }
