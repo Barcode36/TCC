@@ -855,7 +855,7 @@ public class AgendaController implements Initializable {
         
         EventPers eventos = new EventPers();
         ArrayList<EventPers> eventosUsuario = null;
-        eventosUsuario = eventos.buscaEventosUsuario();
+        //eventosUsuario = eventos.buscaEventosUsuario();
         
         System.out.println(eventosUsuario.get(0).getTitulo());
         System.out.println(eventosUsuario.get(0).getCod_local());
@@ -866,61 +866,37 @@ public class AgendaController implements Initializable {
     
     
     
-    private ObservableList<TabelaEventos> listaEvento = FXCollections.observableArrayList();//Para manipular a tabela 
+    //adiciona eventos do dia a tabela 
     @FXML
     public void eventosdoDia(ActionEvent event) {
         
         JFXButton botao =  (JFXButton) event.getSource();
         
         if(botao.getText() != ""){
-            initTable();   
+            initTable(botao.getText());   
         }  
     }
-    public void initTable(){
+    public void initTable(String dia){
         
-        tbcTitulo.setCellValueFactory(new PropertyValueFactory<EventPers, String>("Tutulo"));
+        tbcTitulo.setCellValueFactory(new PropertyValueFactory<EventPers, String>("Titulo"));
         
-        if(!listaEvento.isEmpty()){
-           listaEvento.clear();
-        }
-  
-        tabelaEventosDoDia.setItems(atualizaTabela());
-        getListaEvento();
+      
+        tabelaEventosDoDia.setItems(atualizaTabela(dia));
         
     }
     
-    public ObservableList<EventPers> atualizaTabela(){
+    public ObservableList<EventPers> atualizaTabela(String dia){
         EventPers eventos = new EventPers();
         ArrayList<EventPers> eventosUsuario = null;
-        eventosUsuario = eventos.buscaEventosUsuario();
+        String data = btnAno.getText() + "-" + "11" + "-" + "0"+dia;
+        eventosUsuario = eventos.buscaEventosUsuario(data);
         
        
       
         return FXCollections.observableArrayList(eventosUsuario);
     } 
-    public ObservableList<TabelaEventos> getListaEvento(){
-        
-        EventPers eventos = new EventPers();
-        ArrayList<EventPers> eventosUsuario = null;
-        eventosUsuario = eventos.buscaEventosUsuario();
+ 
   
-            
-        Iterator<EventPers> it = eventosUsuario.iterator();
-
-        while(it.hasNext()){
-            EventPers event = (EventPers) it.next();
-            listaEvento.add(new TabelaEventos(event.getTitulo()));
-        }
-        
-        
-        System.out.println(listaEvento);
-        return listaEvento;
-    }
-    
-    
-    
-    
-
     //verifica calendario e cadastra evento
     public void cadastra(Button btnDia){
         if(!btnDia.getText().equals("")){

@@ -104,13 +104,13 @@ public class EventPers {
     
     
     //Método busca Eventos do usuario
-    public ArrayList<EventPers> buscaEventosUsuario(){
+    public ArrayList<EventPers> buscaEventosUsuario(String data){
         URL rest;
         TCC usuario = new TCC();
         ArrayList<EventPers> dadosEventos = null;
-        
+  
         try{
-            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/buscar/" + usuario.pegarCodigo());
+            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/listar/" + usuario.pegarCodigo() + "/" + data);
             HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
             
             
