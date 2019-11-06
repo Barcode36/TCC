@@ -144,14 +144,20 @@ public class Cadastro_EventosController implements Initializable {
         try{
           
             TCC codigo = new TCC();//codigo do usuario
-            StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/EventPers/inserir/");
+            StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/eventPers/inserir/");
             
-            StringBuffer dataIni = new StringBuffer(dateInic.getValue().toString().replace("/", "-"));
-            StringBuffer dataFim = new StringBuffer(dateFim.getValue().toString().replace("/", "-"));
             
+            
+            
+            String dataInicio = dateInic.getValue().toString().replace("/", "-") + " " + txtHoraInic.getText() + ":" + txtMinuInic.getText();
+            String dataFim = dateFim.getValue().toString().replace("/", "-") + " " + txtHoraFim.getText() + ":" + txtMinFim.getText();
+            
+            
+            System.out.println(dataInicio);
+           
             url.append(txtTitulo.getText().replace(" ", "%20"));
-            url.append("/").append(dataIni.reverse()).append(txtHoraInic.getText()).append(":").append(txtMinuInic.getText()).append(":").append("00");
-            url.append("/").append(dataFim.reverse()).append(txtHoraFim.getText()).append(":").append(txtMinFim.getText()).append(":").append("00");
+            url.append("/").append(dataInicio.replace(" ", "%20"));
+            url.append("/").append(dataFim.replace(" ", "%20"));
             url.append("/").append(txtDescricao.getText().replace(" ", "%20"));
             url.append("/").append(Integer.toString(codigo.pegarCodigo()));
             url.append("/").append("1");
@@ -174,6 +180,7 @@ public class Cadastro_EventosController implements Initializable {
             Gson gson = new Gson();
             JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
             
+            System.out.println(retorno);
             if(Boolean.parseBoolean(js.get("dados").toString())){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("");

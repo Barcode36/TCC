@@ -129,7 +129,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <JFXButton layoutX="99.0" layoutY="497.0" onAction="#cadastrarEventos" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #1b6cd7;" text="Cadastrar" textFill="WHITE">
+      <JFXButton layoutX="99.0" layoutY="497.0" onAction="#cadastrarEventos" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #1b6cd7;" text="Carregar" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
