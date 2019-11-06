@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +21,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 import model.EventPers;
-import model.TabelaEventos;
 import view.TCC;
 import static view.TCC.telaRootCadastroEventos;
 
@@ -222,6 +220,133 @@ public class AgendaController implements Initializable {
     private JFXButton btnC42;
     
     @FXML
+    private AnchorPane pn1;
+
+    @FXML
+    private AnchorPane pn2;
+
+    @FXML
+    private AnchorPane pn3;
+
+    @FXML
+    private AnchorPane pn4;
+
+    @FXML
+    private AnchorPane pn5;
+
+    @FXML
+    private AnchorPane pn6;
+
+    @FXML
+    private AnchorPane pn7;
+    
+    @FXML
+    private AnchorPane pn8;
+    
+    @FXML
+    private AnchorPane pn9;
+    
+    @FXML
+    private AnchorPane pn10;
+    
+    @FXML
+    private AnchorPane pn11;
+    
+    @FXML
+    private AnchorPane pn12;
+    
+    @FXML
+    private AnchorPane pn13;
+    
+    @FXML
+    private AnchorPane pn14;
+    
+    @FXML
+    private AnchorPane pn15;
+    
+    @FXML
+    private AnchorPane pn16;
+    
+    @FXML
+    private AnchorPane pn17;
+    
+    @FXML
+    private AnchorPane pn18;
+    
+    @FXML
+    private AnchorPane pn19;
+    
+    @FXML
+    private AnchorPane pn20;
+    
+    @FXML
+    private AnchorPane pn21;
+    
+    @FXML
+    private AnchorPane pn22;
+    
+    @FXML
+    private AnchorPane pn23;
+    
+    @FXML
+    private AnchorPane pn24;
+    
+    @FXML
+    private AnchorPane pn25;
+    
+    @FXML
+    private AnchorPane pn26;
+    
+    @FXML
+    private AnchorPane pn27;
+    
+    @FXML
+    private AnchorPane pn28;
+    
+    @FXML
+    private AnchorPane pn29;
+    
+    @FXML
+    private AnchorPane pn30;
+        
+    @FXML
+    private AnchorPane pn31;
+  
+    @FXML
+    private AnchorPane pn32;
+        
+    @FXML
+    private AnchorPane pn33;
+        
+    @FXML
+    private AnchorPane pn34;
+        
+    @FXML
+    private AnchorPane pn35;
+        
+    @FXML
+    private AnchorPane pn36;
+        
+    @FXML
+    private AnchorPane pn37;
+        
+    @FXML
+    private AnchorPane pn38;
+    
+        
+    @FXML
+    private AnchorPane pn39;
+      
+    @FXML
+    private AnchorPane pn40;
+        
+    @FXML
+    private AnchorPane pn41;
+        
+    @FXML
+    private AnchorPane pn42;
+       
+    @FXML
     private Label labelDe;
      
     @FXML
@@ -254,7 +379,7 @@ public class AgendaController implements Initializable {
         codigoUsuario = aCodigoUsuario;
     }
     ///////
-    
+    TCC usuario = new TCC();
 
     
     
@@ -265,7 +390,7 @@ public class AgendaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         iniciaCalendario();
-        calendario();
+        calendario();  
     } 
     
     
@@ -316,45 +441,7 @@ public class AgendaController implements Initializable {
     }
     
     
-    /*public void verificaEventodoDia(){
-        URL rest;
-        TCC usuario = new TCC();
-        try{
-            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/buscar/" + usuario.pegarCodigo());
-            HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
-            
-            
-            
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
-            StringBuilder retorno = new StringBuilder();
-            String linha;
-            
-            while((linha = entrada.readLine()) != null){
-                retorno.append(linha);
-            }
-            entrada.close();
-            conexao.disconnect();
-            
-            System.out.println(retorno);
-            
-            
-            Gson gson = new Gson();
-            JsonObject jso = gson.fromJson(retorno.toString(), JsonObject.class);
-            JsonArray jsonArray = jso.getAsJsonArray("dados");
-            
-            ArrayList<EventPers> dadosEventos = null;
-            
-            Type typeDadosEventos = new TypeToken<ArrayList<EventPers>>(){}.getType();
-            dadosEventos = gson.fromJson(jsonArray, typeDadosEventos);
-            
-            
-            
-            
-        }catch(IOException ex){
-            System.out.println("ERRO: " + ex);
-        }
-    }*/
-    
+   
     
     //Muda para a scene de criar eventos
     @FXML
@@ -615,165 +702,172 @@ public class AgendaController implements Initializable {
             switch(setaDia){
                 case 1:
                         btnC1.setText("" + i);
+                        corDiaAtual(btnC1, i, pn1);
                     break;
                 case 2:
                         btnC2.setText("" + i);
-                        corDiaAtual(btnC2, i);
+                        corDiaAtual(btnC2, i, pn2);
                     break;
                 case 3:
                       btnC3.setText("" + i);
-                      corDiaAtual(btnC3, i);
+                      corDiaAtual(btnC3, i, pn3);
                     break;
                 case 4:
                       btnC4.setText("" + i);
-                      corDiaAtual(btnC4, i);
+                      corDiaAtual(btnC4, i, pn4);
                     break;
                 case 5:
                       btnC5.setText("" + i);
-                      corDiaAtual(btnC5, i);
+                      corDiaAtual(btnC5, i, pn5);
                     break;
                 case 6:
                       btnC6.setText("" + i);
-                      corDiaAtual(btnC6, i);
+                      corDiaAtual(btnC6, i, pn6);
                     break;
                 case 7:
                       btnC7.setText("" + i);
-                      corDiaAtual(btnC7, i);
+                      corDiaAtual(btnC7, i, pn7);
                     break;
                 case 8:
                       btnC8.setText("" + i);
+                      corDiaAtual(btnC8, i, pn8);
                     break;
                 case 9:
                       btnC9.setText("" + i);
-                      corDiaAtual(btnC9, i);
+                      corDiaAtual(btnC9, i, pn9);
                     break;
                 case 10:
                       btnC10.setText("" + i);
-                      corDiaAtual(btnC10, i);
+                      corDiaAtual(btnC10, i, pn10);
                     break;
                 case 11:
                       btnC11.setText("" + i);
-                      corDiaAtual(btnC11, i);
+                      corDiaAtual(btnC11, i, pn11);
                     break;
                 case 12:
                       btnC12.setText("" + i);
-                      corDiaAtual(btnC12, i);
+                      corDiaAtual(btnC12, i, pn12);
                     break;
                 case 13:
                       btnC13.setText("" + i);
-                      corDiaAtual(btnC13, i);
+                      corDiaAtual(btnC13, i, pn13);
                     break;
                 case 14:
                         btnC14.setText("" + i);
-                        corDiaAtual(btnC14, i);
+                        corDiaAtual(btnC14, i, pn14);
                     break;
                 case 15:
                         btnC15.setText("" + i);
+                        corDiaAtual(btnC15, i, pn15);
                     break;
                 case 16:
                       btnC16.setText("" + i);
-                      corDiaAtual(btnC16, i);
+                      corDiaAtual(btnC16, i, pn16);
                     break;
                 case 17:
                       btnC17.setText("" + i);
-                      corDiaAtual(btnC17, i);
+                      corDiaAtual(btnC17, i, pn17);
                     break;
                 case 18:
                       btnC18.setText("" + i);
-                      corDiaAtual(btnC18, i);
+                      corDiaAtual(btnC18, i, pn18);
                     break;
                 case 19:
                       btnC19.setText("" + i);
-                      corDiaAtual(btnC19, i);
+                      corDiaAtual(btnC19, i, pn19);
                     break;
                 case 20:
                       btnC20.setText("" + i);
-                      corDiaAtual(btnC20, i);
+                      corDiaAtual(btnC20, i, pn20);
                     break;
                 case 21:
                       btnC21.setText("" + i);
-                      corDiaAtual(btnC21, i);
+                      corDiaAtual(btnC21, i, pn21);
                     break;
                 case 22:
                       btnC22.setText("" + i);
+                      corDiaAtual(btnC22, i, pn22);
                     break;
                 case 23:
                       btnC23.setText("" + i);
-                      corDiaAtual(btnC23, i);
+                      corDiaAtual(btnC23, i, pn23);
                     break;
                 case 24:
                       btnC24.setText("" + i);
-                      corDiaAtual(btnC24, i);
+                      corDiaAtual(btnC24, i, pn24);
                     break;
                 case 25:
                       btnC25.setText("" + i);
-                      corDiaAtual(btnC25, i);
+                      corDiaAtual(btnC25, i, pn25);
                     break;
                 case 26:
                       btnC26.setText("" + i);
-                      corDiaAtual(btnC26, i);
+                      corDiaAtual(btnC26, i, pn26);
                     break;
                 case 27:
                         btnC27.setText("" + i);
-                        corDiaAtual(btnC27, i);
+                        corDiaAtual(btnC27, i, pn27);
                     break;
                 case 28:
                         btnC28.setText("" + i);
-                        corDiaAtual(btnC28, i);
+                        corDiaAtual(btnC28, i, pn28);
                     break;
                 case 29:
                       btnC29.setText("" + i);
+                      corDiaAtual(btnC29, i, pn29);
+                      
                     break;
                 case 30:
                       btnC30.setText("" + i);
-                      corDiaAtual(btnC30, i);
+                      corDiaAtual(btnC30, i, pn30);
                     break;
                 case 31:
                       btnC31.setText("" + i);
-                      corDiaAtual(btnC31, i);
+                      corDiaAtual(btnC31, i, pn31);
                     break;
                 case 32:
                       btnC32.setText("" + i);
-                      corDiaAtual(btnC32, i);
+                      corDiaAtual(btnC32, i, pn32);
                     break;
                 case 33:
                       btnC33.setText("" + i);
-                      corDiaAtual(btnC33, i);
+                      corDiaAtual(btnC33, i, pn33);
                     break;
                 case 34:
                       btnC34.setText("" + i);
-                      corDiaAtual(btnC34, i);
+                      corDiaAtual(btnC34, i, pn34);
                     break;
                 case 35:
                       btnC35.setText("" + i);
-                      corDiaAtual(btnC35, i);
+                      corDiaAtual(btnC35, i, pn35);
                     break;
                 case 36:
                       btnC36.setText("" + i);
+                      corDiaAtual(btnC36, i, pn36);
                     break;
                 case 37:
                       btnC37.setText("" + i);
-                      corDiaAtual(btnC37, i);
+                      corDiaAtual(btnC37, i, pn37);
                     break;
                 case 38:
                       btnC38.setText("" + i);
-                      corDiaAtual(btnC38, i);
+                      corDiaAtual(btnC38, i, pn38);
                     break;
                 case 39:
                       btnC39.setText("" + i);
-                      corDiaAtual(btnC39, i);
+                      corDiaAtual(btnC39, i, pn39);
                     break;
                 case 40:
                         btnC40.setText("" + i);
-                        corDiaAtual(btnC40, i);
+                        corDiaAtual(btnC40, i, pn40);
                     break;
                 case 41:
                         btnC41.setText("" + i);
-                        corDiaAtual(btnC41, i);
+                        corDiaAtual(btnC41, i, pn41);
                     break;
                 case 42:
                       btnC42.setText("" + i);
-                      corDiaAtual(btnC42, i);
+                      corDiaAtual(btnC42, i, pn42);
                     break; 
             }
             setaDia++;
@@ -781,14 +875,14 @@ public class AgendaController implements Initializable {
     }
     
     //Verificando o dia e setando a cor 
-    public void corDiaAtual(JFXButton corDiaAtual, int i){
+    public void corDiaAtual(JFXButton corDiaAtual, int i, AnchorPane pane){
         if(((i == diaFixo) && (mesAltera == mesFixo -1)) && (anoAltera == anoFixo)){
             corDiaAtual.setStyle("-fx-text-fill: black;"); 
-
-            
         }else{
             corDiaAtual.setStyle("-fx-text-fill: #FFF;");
+            
         }
+        verificaEventosDia(pane, corDiaAtual);
     }
     
     
@@ -802,6 +896,7 @@ public class AgendaController implements Initializable {
         labelDe.setVisible(true);
         btnMes.setVisible(true);
         btnAno.setVisible(true);
+        
     }
     //Seleciona Mês
     @FXML
@@ -824,6 +919,7 @@ public class AgendaController implements Initializable {
         btnMes.setVisible(false);
         btnAno.setVisible(false);
         paneAno.setVisible(true);
+        initTable("0");
     }
 
     //Button Selecioan Mês
@@ -833,39 +929,12 @@ public class AgendaController implements Initializable {
         btnMes.setVisible(false);
         btnAno.setVisible(false);
         paneMes.setVisible(true);
+        initTable("0");
     }
     
     
-    //Evento dos buttons 
-    @FXML
-    void eventoC1(ActionEvent event) {
-        cadastra(btnC1);
-    }
 
-    @FXML
-    void eventoC7(ActionEvent event) {
-        JOptionPane.showMessageDialog(null, event.getSource().toString());
-        
-        JFXButton botao =  (JFXButton) event.getSource();
-        String i = "RED";
-        paneCorTest.setStyle("-fx-background-color: "+ i +";");
-        TCC tcc = new TCC();
-        System.out.println(tcc.pegarCodigo());
-        
-        
-        EventPers eventos = new EventPers();
-        ArrayList<EventPers> eventosUsuario = null;
-        //eventosUsuario = eventos.buscaEventosUsuario();
-        
-        System.out.println(eventosUsuario.get(0).getTitulo());
-        System.out.println(eventosUsuario.get(0).getCod_local());
-        
-    }
-    
-    
-    
-    
-    
+   
     //adiciona eventos do dia a tabela 
     @FXML
     public void eventosdoDia(ActionEvent event) {
@@ -879,23 +948,95 @@ public class AgendaController implements Initializable {
     public void initTable(String dia){
         
         tbcTitulo.setCellValueFactory(new PropertyValueFactory<EventPers, String>("Titulo"));
-        
       
         tabelaEventosDoDia.setItems(atualizaTabela(dia));
         
     }
-    
     public ObservableList<EventPers> atualizaTabela(String dia){
+        
+        
         EventPers eventos = new EventPers();
         ArrayList<EventPers> eventosUsuario = null;
-        String data = btnAno.getText() + "-" + "11" + "-" + "0"+dia;
-        eventosUsuario = eventos.buscaEventosUsuario(data);
         
-       
-      
+        
+        if(dia.length() == 1){
+            dia = "0" + dia;
+        }
+        String mes = "";
+        
+   
+        if( btnMes.getText() == "Janeiro"){
+            mes = "1";
+        }
+        else if(btnMes.getText() == "Fevereiro"){
+            mes = "2";
+        }
+        else if(btnMes.getText() == "Março"){
+            mes = "3";
+        }
+        else if(btnMes.getText() == "Abril"){
+            mes = "4";
+        }
+        else if(btnMes.getText() == "Maio"){
+            mes = "5";
+        }
+        else if(btnMes.getText() == "junho"){
+            mes = "6";
+        }
+        else if(btnMes.getText() == "julho"){
+            mes = "7";
+        }
+        else if(btnMes.getText() == "Agosto"){
+            mes = "8";
+        }
+        else if(btnMes.getText() == "Setembro"){
+            mes = "9";
+        }
+        else if(btnMes.getText() == "Outubro"){
+            mes = "10";
+        }
+        else if(btnMes.getText() == "Novenbro"){
+            mes = "11";
+        }
+        else if(btnMes.getText() == "Dezembro"){
+            mes = "12";
+        }
+        
+        
+        String data = btnAno.getText() + "-" + mes + "-" + dia;
+        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegarCodigo()));
+        
         return FXCollections.observableArrayList(eventosUsuario);
     } 
  
+    
+    //Verifica se a eventos no dia
+    public void verificaEventosDia(AnchorPane pane, JFXButton btnDia){
+       
+        EventPers eventos = new EventPers();
+        ArrayList<EventPers> eventosUsuario = null;
+        String data = btnAno.getText() + "-" + "11" + "-" + "0"+ btnDia.getText();
+        System.out.println(data);
+        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegarCodigo()));
+        
+        
+        System.out.println(eventosUsuario);
+        if(eventosUsuario.size() < 0){
+            pane.setStyle("-fx-background-color: #0768ae;");
+        }else{
+            pane.setStyle("-fx-background-color: red;");
+        }
+        
+        
+        
+
+    }
+    
+    
+    
+    
+    
+    
   
     //verifica calendario e cadastra evento
     public void cadastra(Button btnDia){

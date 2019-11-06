@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +19,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
 import model.Endereco;
+import view.TCC;
 import static view.TCC.telaRootAgenda;
 
 /**
@@ -30,11 +34,35 @@ public class Cadastro_EventosController implements Initializable {
 
     
     
+     @FXML
+    private JFXTextField txtTitulo;
+
+    @FXML
+    private JFXTextField txtMinuInic;
+
+    @FXML
+    private JFXTextField txtHoraInic;
+
     @FXML
     private JFXTextField txtCEP;
-    
+
     @FXML
     private JFXTextField txtEndereco;
+
+    @FXML
+    private TextArea txtDescricao;
+
+    @FXML
+    private JFXDatePicker dateInic;
+
+    @FXML
+    private JFXDatePicker dateFim;
+
+    @FXML
+    private JFXTextField txtHoraFim;
+
+    @FXML
+    private JFXTextField txtMinFim;
     
     
     
@@ -54,7 +82,8 @@ public class Cadastro_EventosController implements Initializable {
         telaRootAgenda();
     }
     
-    
+    //Endereço
+    ArrayList<Endereco> endereco = null;
     
     //Faz a busca do endereço pelo CEP
     @FXML
@@ -82,14 +111,11 @@ public class Cadastro_EventosController implements Initializable {
             JsonObject jso = gson.fromJson(concatenar, JsonObject.class);
             JsonArray jsonArray = jso.getAsJsonArray("dados");
 
-            
-            ArrayList<Endereco> endereco = null;
-            
+
             Type enderecoListaType = new TypeToken<ArrayList<Endereco>>(){}.getType();
             endereco =  gson.fromJson(jsonArray, enderecoListaType);
             
-            
-            txtEndereco.setText(endereco.get(0).getLogradouro() + " - " + endereco.get(0).getBairro() + " - " + endereco.get(0).getLocalidade());                  
+            txtEndereco.setText(endereco.get(0).getLogradouro() + " - " + endereco.get(0).getBairro() + " - " + endereco.get(0).getLocalidade() + " - " + endereco.get(0).getUf());                  
             txtEndereco.setEditable(false);
   
         }catch(MalformedURLException ex){
@@ -103,8 +129,69 @@ public class Cadastro_EventosController implements Initializable {
     
     //faz o cadastro de eventos
     @FXML
-    void cadastrarEventos(ActionEvent event) {
-        //cadastra o endereço e busca o código
+    void cadastrarEventos(ActionEvent event){
+        //cadastra o endereço
+        
+        
+        /*try(){
+            url = new URL("http://143.106.241.1/cl18463/tcc/api/endereco/inserir/" + "/" + " "+ endereco.get(0).getLogradouro() + "/" + endereco.get(0).getBairro() + "/" + endereco.get(0).getLocalidade() + "/" + endereco.get(0).getUf());
+            
+            
+        }*/
+        
+        ///cadastro de eventos
+        URL rest;
+        try{
+          
+            TCC codigo = new TCC();//codigo do usuario
+            StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/EventPers/inserir/");
+            
+            StringBuffer dataIni = new StringBuffer(dateInic.getValue().toString().replace("/", "-"));
+            StringBuffer dataFim = new StringBuffer(dateFim.getValue().toString().replace("/", "-"));
+            
+            url.append(txtTitulo.getText().replace(" ", "%20"));
+            url.append("/").append(dataIni.reverse()).append(txtHoraInic.getText()).append(":").append(txtMinuInic.getText()).append(":").append("00");
+            url.append("/").append(dataFim.reverse()).append(txtHoraFim.getText()).append(":").append(txtMinFim.getText()).append(":").append("00");
+            url.append("/").append(txtDescricao.getText().replace(" ", "%20"));
+            url.append("/").append(Integer.toString(codigo.pegarCodigo()));
+            url.append("/").append("1");
+            rest = new URL(url.toString());
+            
+            HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
+            StringBuilder retorno = new StringBuilder();
+                
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
+            String linha;
+            while((linha = entrada.readLine()) != null){
+                retorno.append(linha);
+            }
+            
+            
+            entrada.close();
+            conexao.disconnect();
+            
+            System.out.println(url);
+            Gson gson = new Gson();
+            JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
+            
+            if(Boolean.parseBoolean(js.get("dados").toString())){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("");
+                alert.setHeaderText("Evento cadastrado com sucesso!");
+                alert.showAndWait();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("");
+                alert.setHeaderText("Não foi possível criar um novo evento, tente novamente!");
+                alert.showAndWait();
+            }
+            
+        }catch(MalformedURLException ex){
+            System.out.println("ERRO: " + ex);
+        }catch(IOException ex){
+            System.out.println("ERRO: " + ex);
+        }
+        
         
          
         

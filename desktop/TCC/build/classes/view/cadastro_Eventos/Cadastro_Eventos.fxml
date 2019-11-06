@@ -21,7 +21,7 @@
             <Font name="Segoe UI" size="15.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="144.0" layoutY="43.0" prefHeight="25.0" prefWidth="238.0" unFocusColor="#bbaeae" />
+      <JFXTextField fx:id="txtTitulo" layoutX="144.0" layoutY="43.0" prefHeight="25.0" prefWidth="238.0" unFocusColor="#bbaeae" />
       <AnchorPane prefHeight="552.0" prefWidth="64.0" style="-fx-background-color: #1b6cd7;">
          <children>
             <JFXButton layoutX="7.0" layoutY="14.0" onAction="#mudaTelaAgenda" prefHeight="37.0" prefWidth="46.0">
@@ -41,7 +41,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <JFXTextField alignment="CENTER" layoutX="22.0" layoutY="18.0" prefHeight="37.0" prefWidth="64.0" promptText="00">
+            <JFXTextField fx:id="txtMinuInic" alignment="CENTER" layoutX="22.0" layoutY="18.0" prefHeight="37.0" prefWidth="64.0" promptText="00">
                <font>
                   <Font size="16.0" />
                </font>
@@ -55,7 +55,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <JFXTextField alignment="CENTER" layoutX="23.0" layoutY="16.0" prefHeight="37.0" prefWidth="64.0" promptText="00">
+            <JFXTextField fx:id="txtHoraInic" alignment="CENTER" layoutX="23.0" layoutY="16.0" prefHeight="37.0" prefWidth="64.0" promptText="00">
                <font>
                   <Font size="16.0" />
                </font>
@@ -98,9 +98,9 @@
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <TextArea layoutX="173.0" layoutY="160.0" prefHeight="130.0" prefWidth="454.0" />
-      <JFXDatePicker defaultColor="#1b6cd7" layoutX="219.0" layoutY="344.0" prefHeight="25.0" prefWidth="143.0" />
-      <JFXDatePicker defaultColor="#1b6cd7" layoutX="219.0" layoutY="439.0" prefHeight="25.0" prefWidth="143.0" />
+      <TextArea fx:id="txtDescricao" layoutX="173.0" layoutY="160.0" prefHeight="130.0" prefWidth="454.0" />
+      <JFXDatePicker fx:id="dateInic" defaultColor="#1b6cd7" layoutX="219.0" layoutY="344.0" prefHeight="25.0" prefWidth="143.0" />
+      <JFXDatePicker fx:id="dateFim" defaultColor="#1b6cd7" layoutX="219.0" layoutY="439.0" prefHeight="25.0" prefWidth="143.0" />
       <AnchorPane layoutX="397.0" layoutY="408.0" prefHeight="69.0" prefWidth="107.0" style="-fx-background-color: #eae5e5;">
          <children>
             <Label layoutX="41.0" layoutY="1.0" text="hrs" textFill="#909090">
@@ -108,7 +108,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <JFXTextField alignment="CENTER" layoutX="22.0" layoutY="16.0" prefHeight="37.0" prefWidth="62.0" promptText="00">
+            <JFXTextField fx:id="txtHoraFim" alignment="CENTER" layoutX="22.0" layoutY="16.0" prefHeight="37.0" prefWidth="62.0" promptText="00">
                <font>
                   <Font size="16.0" />
                </font>
@@ -122,7 +122,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <JFXTextField alignment="CENTER" layoutX="22.0" layoutY="16.0" prefHeight="37.0" prefWidth="64.0" promptText="00">
+            <JFXTextField fx:id="txtMinFim" alignment="CENTER" layoutX="22.0" layoutY="16.0" prefHeight="37.0" prefWidth="64.0" promptText="00">
                <font>
                   <Font size="16.0" />
                </font>

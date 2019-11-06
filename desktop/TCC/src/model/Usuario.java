@@ -14,10 +14,10 @@ public class Usuario {
     private String email;
     private String senha;
     private String telefone;
-    private BufferedImage foto;
+    private String foto;
     
     //Construtores
-    public Usuario(int codigo, String nome, String usuario, String email, String senha, String telefone, BufferedImage foto){
+    public Usuario(int codigo, String nome, String usuario, String email, String senha, String telefone, String foto){
         this.setCodigo(codigo);
         this.setNome(nome);
         this.setUsuario(usuario);
@@ -64,10 +64,10 @@ public class Usuario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    public BufferedImage getFoto() {
+    public String getFoto() {
         return foto;
     }
-    public void setFoto(BufferedImage foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 }

@@ -275,13 +275,13 @@
                         </HBox>
                         <HBox prefHeight="1.0" prefWidth="71.0" style="-fx-background-color: red;">
                            <children>
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
+                              <AnchorPane fx:id="pn1" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn2" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn3" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn4" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn5" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn6" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn7" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
                            </children>
                         </HBox>
                         <HBox prefHeight="70.0" prefWidth="487.0">
@@ -297,13 +297,13 @@
                         </HBox>
                         <HBox prefHeight="1.0" prefWidth="71.0" style="-fx-background-color: red;">
                            <children>
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
+                              <AnchorPane fx:id="pn8" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn9" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn10" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn11" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn12" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn13" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn14" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
                            </children>
                         </HBox>
                         <HBox prefHeight="70.0" prefWidth="487.0">
@@ -319,13 +319,13 @@
                         </HBox>
                         <HBox prefHeight="1.0" prefWidth="71.0" style="-fx-background-color: red;">
                            <children>
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
+                              <AnchorPane fx:id="pn15" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn16" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn17" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn18" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn19" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn20" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn21" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
                            </children>
                         </HBox>
                         <HBox prefHeight="70.0" prefWidth="487.0">
@@ -341,13 +341,13 @@
                         </HBox>
                         <HBox prefHeight="1.0" prefWidth="71.0" style="-fx-background-color: red;">
                            <children>
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
+                              <AnchorPane fx:id="pn22" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn23" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn24" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn25" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn26" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn27" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn28" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
                            </children>
                         </HBox>
                         <HBox prefHeight="70.0" prefWidth="487.0">
@@ -363,13 +363,13 @@
                         </HBox>
                         <HBox prefHeight="1.0" prefWidth="71.0" style="-fx-background-color: red;">
                            <children>
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="2.0" prefWidth="71.0" />
+                              <AnchorPane fx:id="pn29" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn30" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn31" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn32" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn33" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn34" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn35" prefHeight="2.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
                            </children>
                         </HBox>
                         <HBox prefHeight="70.0" prefWidth="487.0">
@@ -385,13 +385,13 @@
                         </HBox>
                         <HBox prefHeight="1.0" prefWidth="71.0" style="-fx-background-color: red;">
                            <children>
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
-                              <AnchorPane prefHeight="22.0" prefWidth="71.0" />
+                              <AnchorPane fx:id="pn36" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn37" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn38" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn39" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn40" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn41" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
+                              <AnchorPane fx:id="pn42" prefHeight="22.0" prefWidth="71.0" style="-fx-background-color: #0768ae;" />
                            </children>
                         </HBox>
                      </children>

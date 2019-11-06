@@ -104,13 +104,12 @@ public class EventPers {
     
     
     //Método busca Eventos do usuario
-    public ArrayList<EventPers> buscaEventosUsuario(String data){
+    public ArrayList<EventPers> buscaEventosUsuario(String data, String usuario){
         URL rest;
-        TCC usuario = new TCC();
         ArrayList<EventPers> dadosEventos = null;
   
         try{
-            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/listar/" + usuario.pegarCodigo() + "/" + data);
+            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/listar/" + usuario + "/" + data);
             HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
             
             
@@ -132,7 +131,7 @@ public class EventPers {
 
             Type typeDadosEventos = new TypeToken<ArrayList<EventPers>>(){}.getType();
             dadosEventos = gson.fromJson(jsonArray, typeDadosEventos);
-
+            
         }catch(IOException ex){
             System.out.println("ERRO: " + ex);
         }
