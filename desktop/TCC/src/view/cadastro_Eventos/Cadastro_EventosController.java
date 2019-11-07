@@ -144,7 +144,7 @@ public class Cadastro_EventosController implements Initializable {
         try{
           
             TCC codigo = new TCC();//codigo do usuario
-            StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/eventPers/inserir/");
+            StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/EventPers/inserir/");
             
             
             
