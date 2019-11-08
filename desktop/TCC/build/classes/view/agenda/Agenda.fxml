@@ -154,7 +154,7 @@
                   </HBox>
                   <JFXButton alignment="BASELINE_RIGHT" layoutX="57.0" layoutY="276.0" onAction="#mudaTelaCadastroEventos" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Novo" textFill="WHITE" />
                   <JFXButton alignment="BASELINE_RIGHT" layoutX="59.0" layoutY="316.0" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Excluir" textFill="WHITE" />
-                  <JFXButton alignment="BASELINE_RIGHT" layoutX="57.0" layoutY="356.0" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Editar" textFill="WHITE" />
+                  <JFXButton alignment="BASELINE_RIGHT" layoutX="57.0" layoutY="356.0" onAction="#editaEventos" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Editar" textFill="WHITE" />
                   <JFXButton alignment="BASELINE_RIGHT" layoutX="57.0" layoutY="396.0" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Visualizar" textFill="WHITE" />
                </children>
             </AnchorPane>

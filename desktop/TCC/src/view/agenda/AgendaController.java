@@ -364,7 +364,6 @@ public class AgendaController implements Initializable {
     @FXML
     private TableColumn<EventPers, String> tbcTitulo;
     
-    
 
     
     
@@ -379,12 +378,10 @@ public class AgendaController implements Initializable {
         codigoUsuario = aCodigoUsuario;
     }
     ///////
+    
+    
     TCC usuario = new TCC();
 
-    
-    
-    
-  
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -443,14 +440,128 @@ public class AgendaController implements Initializable {
     
    
     
-    //Muda para a scene de criar eventos
+    //Muda para a scene de para criar eventos
     @FXML
     void mudaTelaCadastroEventos(ActionEvent event) {
-        telaRootCadastroEventos();
+        telaRootCadastroEventos();  
+    }
+    
+    //Muda para a scene para o update de Eventos
+    @FXML
+    void editaEventos(ActionEvent event) {
+        telaRootCadastroEventos(tabelaEventosDoDia.getSelectionModel().getSelectedItem().getCodigo()); 
+        
     }
     
     
     
+    
+    
+    
+    @FXML
+    public void eventosdoDia(ActionEvent event) {
+        
+        JFXButton botao =  (JFXButton) event.getSource();
+        
+        if(botao.getText() != ""){
+            initTable(botao.getText());   
+        }  
+    }
+    
+    //adiciona eventos do dia a tabela 
+    public void initTable(String dia){
+        
+        tbcTitulo.setCellValueFactory(new PropertyValueFactory<EventPers, String>("Titulo"));
+      
+        tabelaEventosDoDia.setItems(atualizaTabela(dia));
+        
+    }
+    
+    public ObservableList<EventPers> atualizaTabela(String dia){
+        
+        
+        EventPers eventos = new EventPers();
+       //Array de eventos do dia
+        ArrayList<EventPers> eventosUsuario = null;
+        
+        
+        
+        if(dia.length() == 1){
+            dia = "0" + dia;
+        }
+   
+        
+        String data = btnAno.getText() + "-" + Integer.toString(converteMes()) + "-" + dia;
+        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegarCodigo()));
+        
+        return FXCollections.observableArrayList(eventosUsuario);
+    } 
+    //
+    
+    //Verifica se a eventos no dia
+    public void verificaEventosDia(AnchorPane pane, JFXButton btnDia){
+       
+        EventPers eventos = new EventPers();
+        ArrayList<EventPers> eventosUsuario = null;
+        String data = btnAno.getText() + "-" + converteMes() + "-" + "0"+ btnDia.getText();
+        System.out.println(data);
+        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegarCodigo()));
+        
+        
+        System.out.println(eventosUsuario);
+        if(eventosUsuario.size() > 0){
+            pane.setStyle("-fx-background-color: #0768ae;");
+        }else{
+            pane.setStyle("-fx-background-color: red;");
+        }
+     
+        
+        
+
+    }
+    
+    
+    //COnveter o mes para numero
+    public int converteMes(){
+        int mes = 0;
+        if( btnMes.getText() == "Janeiro"){
+            mes = 1;
+        }
+        else if(btnMes.getText() == "Fevereiro"){
+            mes = 2;
+        }
+        else if(btnMes.getText() == "Março"){
+            mes = 3;
+        }
+        else if(btnMes.getText() == "Abril"){
+            mes = 4;
+        }
+        else if(btnMes.getText() == "Maio"){
+            mes = 5;
+        }
+        else if(btnMes.getText() == "junho"){
+            mes = 6;
+        }
+        else if(btnMes.getText() == "julho"){
+            mes = 7;
+        }
+        else if(btnMes.getText() == "Agosto"){
+            mes = 8;
+        }
+        else if(btnMes.getText() == "Setembro"){
+            mes = 9;
+        }
+        else if(btnMes.getText() == "Outubro"){
+            mes = 7;
+        }
+        else if(btnMes.getText() == "Novenbro"){
+            mes = 11;
+        }
+        else if(btnMes.getText() == "Dezembro"){
+            mes = 12;
+        }
+        return mes;
+    }
     
     
     
@@ -882,6 +993,8 @@ public class AgendaController implements Initializable {
             corDiaAtual.setStyle("-fx-text-fill: #FFF;");
             
         }
+        System.out.println(usuario.pegarCodigo());
+        System.out.println("entrou aqui antes");
         verificaEventosDia(pane, corDiaAtual);
     }
     
@@ -935,104 +1048,6 @@ public class AgendaController implements Initializable {
     
 
    
-    //adiciona eventos do dia a tabela 
-    @FXML
-    public void eventosdoDia(ActionEvent event) {
-        
-        JFXButton botao =  (JFXButton) event.getSource();
-        
-        if(botao.getText() != ""){
-            initTable(botao.getText());   
-        }  
-    }
-    public void initTable(String dia){
-        
-        tbcTitulo.setCellValueFactory(new PropertyValueFactory<EventPers, String>("Titulo"));
-      
-        tabelaEventosDoDia.setItems(atualizaTabela(dia));
-        
-    }
-    public ObservableList<EventPers> atualizaTabela(String dia){
-        
-        
-        EventPers eventos = new EventPers();
-        ArrayList<EventPers> eventosUsuario = null;
-        
-        
-        if(dia.length() == 1){
-            dia = "0" + dia;
-        }
-        String mes = "";
-        
-   
-        if( btnMes.getText() == "Janeiro"){
-            mes = "1";
-        }
-        else if(btnMes.getText() == "Fevereiro"){
-            mes = "2";
-        }
-        else if(btnMes.getText() == "Março"){
-            mes = "3";
-        }
-        else if(btnMes.getText() == "Abril"){
-            mes = "4";
-        }
-        else if(btnMes.getText() == "Maio"){
-            mes = "5";
-        }
-        else if(btnMes.getText() == "junho"){
-            mes = "6";
-        }
-        else if(btnMes.getText() == "julho"){
-            mes = "7";
-        }
-        else if(btnMes.getText() == "Agosto"){
-            mes = "8";
-        }
-        else if(btnMes.getText() == "Setembro"){
-            mes = "9";
-        }
-        else if(btnMes.getText() == "Outubro"){
-            mes = "10";
-        }
-        else if(btnMes.getText() == "Novenbro"){
-            mes = "11";
-        }
-        else if(btnMes.getText() == "Dezembro"){
-            mes = "12";
-        }
-        
-        
-        String data = btnAno.getText() + "-" + mes + "-" + dia;
-        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegarCodigo()));
-        
-        return FXCollections.observableArrayList(eventosUsuario);
-    } 
- 
-    
-    //Verifica se a eventos no dia
-    public void verificaEventosDia(AnchorPane pane, JFXButton btnDia){
-       
-        EventPers eventos = new EventPers();
-        ArrayList<EventPers> eventosUsuario = null;
-        String data = btnAno.getText() + "-" + "11" + "-" + "0"+ btnDia.getText();
-        System.out.println(data);
-        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegarCodigo()));
-        
-        
-        System.out.println(eventosUsuario);
-        if(eventosUsuario.size() < 0){
-            pane.setStyle("-fx-background-color: #0768ae;");
-        }else{
-            pane.setStyle("-fx-background-color: red;");
-        }
-        
-        
-        
-
-    }
-    
-    
     
     
     

@@ -9,9 +9,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import javafx.scene.control.Alert;
 import view.TCC;
 
 
@@ -139,4 +141,127 @@ public class EventPers {
         return dadosEventos;
     }
     
+    public void cadastrarEvento(StringBuilder url){
+        ///cadastro de eventos
+        URL rest;
+        try{
+            rest = new URL(url.toString());
+            
+            HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
+            StringBuilder retorno = new StringBuilder();
+                
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
+            String linha;
+            while((linha = entrada.readLine()) != null){
+                retorno.append(linha);
+            }
+            
+            
+            entrada.close();
+            conexao.disconnect();
+            
+            Gson gson = new Gson();
+            System.out.println(url);
+            System.out.println(retorno);
+            
+            
+            JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
+            
+            if(Boolean.parseBoolean(js.get("dados").toString())){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("");
+                alert.setHeaderText("Evento cadastrado com sucesso!");
+                alert.showAndWait();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("");
+                alert.setHeaderText("Não foi possível criar um novo evento, tente novamente!");
+                alert.showAndWait();
+            }
+            
+        }catch(MalformedURLException ex){
+            System.out.println("ERRO: " + ex);
+        }catch(IOException ex){
+            System.out.println("ERRO: " + ex);
+        }
+    }
+    
+    /*
+    //Método busca Eventos do usuario
+    public ArrayList<EventPers> buscaEventosUsuario(int usuario, int codigoEvento){
+        URL rest;
+        ArrayList<EventPers> dadosEventos = null;
+  
+        try{
+            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/listar/" + Integer.toString(usuario) + "/" + Integer.toString(codigoEvento));
+            HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
+            
+            
+            
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
+            StringBuilder retorno = new StringBuilder();
+            String linha;
+            
+            while((linha = entrada.readLine()) != null){
+                retorno.append(linha);
+            }
+            entrada.close();
+            conexao.disconnect();
+            
+            Gson gson = new Gson();
+            JsonObject jso = gson.fromJson(retorno.toString(), JsonObject.class);
+            JsonArray jsonArray = jso.getAsJsonArray("dados");
+            
+
+            Type typeDadosEventos = new TypeToken<ArrayList<EventPers>>(){}.getType();
+            dadosEventos = gson.fromJson(jsonArray, typeDadosEventos);
+            
+        }catch(IOException ex){
+            System.out.println("ERRO: " + ex);
+        }
+        
+        return dadosEventos;
+    }
+    public void atualizarEvento(StringBuilder url){
+        ///cadastro de eventos
+        URL rest;
+        try{
+            rest = new URL(url.toString());
+            
+            HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
+            StringBuilder retorno = new StringBuilder();
+                
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
+            String linha;
+            while((linha = entrada.readLine()) != null){
+                retorno.append(linha);
+            }
+            
+            
+            entrada.close();
+            conexao.disconnect();
+            
+            Gson gson = new Gson();
+            JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
+            
+            System.out.println(retorno);
+            if(Boolean.parseBoolean(js.get("dados").toString())){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("");
+                alert.setHeaderText("Evento cadastrado com sucesso!");
+                alert.showAndWait();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("");
+                alert.setHeaderText("Não foi possível criar um novo evento, tente novamente!");
+                alert.showAndWait();
+            }
+            
+        }catch(MalformedURLException ex){
+            System.out.println("ERRO: " + ex);
+        }catch(IOException ex){
+            System.out.println("ERRO: " + ex);
+        }
+    }
+    */
 }

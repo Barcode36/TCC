@@ -1,6 +1,8 @@
 
 package model;
 
+
+
 /**
  *
  * @author Elias Pedro
@@ -29,6 +31,7 @@ public class Endereco {
         this.setIbge(ibge);
         this.setGia(gia);
     }
+    
     
     //Métodos Getters e Setters
     public String getCep() {
@@ -85,7 +88,5 @@ public class Endereco {
     public void setGia(int gia) {
         this.gia = gia;
     }
-    
-    
     
 }

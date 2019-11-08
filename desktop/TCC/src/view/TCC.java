@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.EventPers;
 import view.login_cadastro.Login_CadastroController;
 
 
@@ -27,6 +29,27 @@ public class TCC extends Application {
     }
     public static void setCodigoUsuario(int aCodigoUsuario) {
         codigoUsuario = aCodigoUsuario;
+    }
+    
+    //Código de eventos para edeitar
+    private static int event;
+    
+     public static int getEvent() {
+        return event;
+    }
+    public void setEvent(int event) {
+        this.event = event;
+    }
+    
+    
+    //Array de eventos para edeitar
+    private static ArrayList<EventPers> eventPers;
+    
+    public static ArrayList<EventPers> getEventPers() {
+        return eventPers;
+    }
+    public static void setEventPers(ArrayList<EventPers> aEventPers) {
+        eventPers = aEventPers;
     }
     
     
@@ -80,12 +103,24 @@ public class TCC extends Application {
         stage.setScene(TCC.rootAgendaR);
         stage.centerOnScreen();
     }
-    
+
+    //método que vai para a scene Cadastro_ventos_controller com parâmetro de eventos
+    public static void telaRootCadastroEventos(int eventoCodigo){
+        event = eventoCodigo;
+        stage.setScene(rootCadastroEventosR);
+        stage.centerOnScreen(); 
+    }
+    //Método que vai para a sece Cadastro_ventos_controller 
     public static void telaRootCadastroEventos(){
         stage.setScene(rootCadastroEventosR);
         stage.centerOnScreen();
     }
-    
+    //Método que vai para a sece Cadastro_ventos_controller passando como parâmetro um ArrayLiss<EventPers> 
+    public static void telaRootCadastroEventos(ArrayList<EventPers> aEventPers){
+        eventPers = aEventPers;
+        stage.setScene(rootCadastroEventosR);
+        stage.centerOnScreen();
+    }
     
     
     
@@ -93,8 +128,15 @@ public class TCC extends Application {
     public int pegarCodigo(){
         return codigoUsuario;
     }
-
- 
+    //Método para passar o código do Evento
+    public int pegarEventoUsuario(){
+        return event;
+    }
+    //Método para passar o Evento
+    public ArrayList<EventPers> pegarArrayEventoUsuario (){
+        return getEventPers();
+    }
+    
     
     //Métodos minímizar, maximizar efechar
     
@@ -123,8 +165,5 @@ public class TCC extends Application {
     //Main
     public static void main(String[] args) {
         launch(args);
-    }
-    
-    
-    
+    }  
 }

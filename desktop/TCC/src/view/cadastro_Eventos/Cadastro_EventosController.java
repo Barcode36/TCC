@@ -19,9 +19,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import model.Endereco;
+import model.EventPers;
+import model.Local;
 import view.TCC;
 import static view.TCC.telaRootAgenda;
 
@@ -64,6 +65,9 @@ public class Cadastro_EventosController implements Initializable {
     @FXML
     private JFXTextField txtMinFim;
     
+    //Endereço
+    ArrayList<Endereco> endereco = null;
+    
     
     
     
@@ -72,6 +76,19 @@ public class Cadastro_EventosController implements Initializable {
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        /*TCC eventosArray = new TCC();
+        if(eventosArray.pegarArrayEventoUsuario() == null){
+           Local local = new Local();
+           
+           txtTitulo.setText(eventosArray.pegarArrayEventoUsuario().get(0).getTitulo());
+           txtCEP.setText("tem que criar ainda");
+           txtEndereco.setText(local.buscaEndereco(1).get(0).getRua() + " - " + local.buscaEndereco(1).get(0).getBairro() + " - " + local.buscaEndereco(1).get(0).getCidade() + " - " + local.buscaEndereco(1).get(0).getEstado());
+           txtDescricao.setText(eventosArray.pegarArrayEventoUsuario().get(0).getDescricao());
+           //txtCEP.setText(Integer.toString(eventosArray.pegarArrayEventoUsuario().get(0).get));
+           
+           //dateInic.setValue();
+           eventosArray.setEventPers(null); 
+        }*/
         // TODO
     } 
     
@@ -80,10 +97,101 @@ public class Cadastro_EventosController implements Initializable {
     @FXML
     void mudaTelaAgenda(ActionEvent event) {
         telaRootAgenda();
+        limparCampos();
     }
     
-    //Endereço
-    ArrayList<Endereco> endereco = null;
+    
+    
+    
+    
+    
+    //faz o cadastro de eventos
+    @FXML
+    void CarregarEventos(ActionEvent event){
+        //cadastra o endereço
+        
+        
+        
+        
+        //variaves para códigos e evento  
+       /* TCC codigos = new TCC();//Codigos
+        EventPers eventsPers = new EventPers();*/
+        
+        //if(eventsPers.buscaEventosUsuario(codigos.pegarCodigo(), codigos.pegarEventoUsuario()) == null){
+            //cadastra Eventos
+            EventPers eventsPersC = new EventPers();
+            eventsPersC.cadastrarEvento(urlCadastroEvento());   
+ 
+       /*}else{
+            //Update eventos
+            EventPers eventsPersA = new EventPers();
+            eventsPersA.atualizarEvento(urlAtualizaEvento());
+        }*/
+        
+        
+        limparCampos();
+    }
+    
+   
+        
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //cria a url para cadastro de eventos
+    public StringBuilder urlCadastroEvento(){
+        TCC codigo = new TCC();//codigo do usuario
+        
+        StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/EventPers/inserir/");
+            
+        String dataInicio = dateInic.getValue().toString().replace("/", "-") + " " + txtHoraInic.getText() + ":" + txtMinuInic.getText();
+        String dataFim = dateFim.getValue().toString().replace("/", "-") + " " + txtHoraFim.getText() + ":" + txtMinFim.getText();
+            
+        url.append(txtTitulo.getText().replace(" ", "%20"));
+        url.append("/").append(dataInicio.replace(" ", "%20"));
+        url.append("/").append(dataFim.replace(" ", "%20"));
+        url.append("/").append(txtDescricao.getText().replace(" ", "%20"));
+        url.append("/").append(Integer.toString(codigo.pegarCodigo()));
+        url.append("/").append(endereco.get(0).getCep().replace("-", ""));
+        
+        return url;
+    }
+    
+    //cria a url para atualizar eventos
+    public StringBuilder urlAtualizaEvento(){
+        TCC codigos = new TCC();//Codigos
+        EventPers eventsPersA = new EventPers();
+        
+        StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/EventPers/atualizar/");
+        String dataInicio = dateInic.getValue().toString().replace("/", "-") + " " + txtHoraInic.getText() + ":" + txtMinuInic.getText();
+        String dataFim = dateFim.getValue().toString().replace("/", "-") + " " + txtHoraFim.getText() + ":" + txtMinFim.getText();
+            
+        url.append(Integer.toString(codigos.pegarEventoUsuario()));
+        url.append("/").append(txtTitulo.getText().replace(" ", "%20"));
+        url.append("/").append(dataInicio.replace(" ", "%20"));
+        url.append("/").append(dataFim.replace(" ", "%20"));
+        url.append("/").append(txtDescricao.getText().replace(" ", "%20"));
+        url.append("/").append(Integer.toString(codigos.pegarCodigo()));
+        url.append("/").append(endereco.get(0).getCep().replace("-", ""));
+            
+        
+            
+        return  url;
+    }
+    
+    
+    
+    
+    
     
     //Faz a busca do endereço pelo CEP
     @FXML
@@ -117,6 +225,10 @@ public class Cadastro_EventosController implements Initializable {
             
             txtEndereco.setText(endereco.get(0).getLogradouro() + " - " + endereco.get(0).getBairro() + " - " + endereco.get(0).getLocalidade() + " - " + endereco.get(0).getUf());                  
             txtEndereco.setEditable(false);
+            
+            Local cadastro = new Local();
+            cadastro.CadastraEndereco(urlCadastroLocal());
+            
   
         }catch(MalformedURLException ex){
             System.out.println("ERRO: " + ex);
@@ -126,89 +238,30 @@ public class Cadastro_EventosController implements Initializable {
         }
     }
     
-    
-    //faz o cadastro de eventos
-    @FXML
-    void cadastrarEventos(ActionEvent event){
-        //cadastra o endereço
+    public StringBuilder urlCadastroLocal(){
+        StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/Endereco/inserir/");
         
-        
-        /*try(){
-            url = new URL("http://143.106.241.1/cl18463/tcc/api/endereco/inserir/" + "/" + " "+ endereco.get(0).getLogradouro() + "/" + endereco.get(0).getBairro() + "/" + endereco.get(0).getLocalidade() + "/" + endereco.get(0).getUf());
-            
-            
-        }*/
-        
-        ///cadastro de eventos
-        URL rest;
-        try{
-          
-            TCC codigo = new TCC();//codigo do usuario
-            StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/EventPers/inserir/");
-            
-            
-            
-            
-            String dataInicio = dateInic.getValue().toString().replace("/", "-") + " " + txtHoraInic.getText() + ":" + txtMinuInic.getText();
-            String dataFim = dateFim.getValue().toString().replace("/", "-") + " " + txtHoraFim.getText() + ":" + txtMinFim.getText();
-            
-            
-            System.out.println(dataInicio);
-           
-            url.append(txtTitulo.getText().replace(" ", "%20"));
-            url.append("/").append(dataInicio.replace(" ", "%20"));
-            url.append("/").append(dataFim.replace(" ", "%20"));
-            url.append("/").append(txtDescricao.getText().replace(" ", "%20"));
-            url.append("/").append(Integer.toString(codigo.pegarCodigo()));
-            url.append("/").append("1");
-            rest = new URL(url.toString());
-            
-            HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
-            StringBuilder retorno = new StringBuilder();
-                
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
-            String linha;
-            while((linha = entrada.readLine()) != null){
-                retorno.append(linha);
-            }
-            
-            
-            entrada.close();
-            conexao.disconnect();
-            
-            System.out.println(url);
-            Gson gson = new Gson();
-            JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
-            
-            System.out.println(retorno);
-            if(Boolean.parseBoolean(js.get("dados").toString())){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("");
-                alert.setHeaderText("Evento cadastrado com sucesso!");
-                alert.showAndWait();
-            }else{
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("");
-                alert.setHeaderText("Não foi possível criar um novo evento, tente novamente!");
-                alert.showAndWait();
-            }
-            
-        }catch(MalformedURLException ex){
-            System.out.println("ERRO: " + ex);
-        }catch(IOException ex){
-            System.out.println("ERRO: " + ex);
-        }
-        
-        
-         
-        
-        
-        
-        
-        
+        url.append(endereco.get(0).getCep().replace("-", ""));
+        url.append("/").append(endereco.get(0).getLogradouro().replace(" ", "%20"));
+        url.append("/").append(endereco.get(0).getBairro().replace(" ", "%20"));
+        url.append("/").append(endereco.get(0).getLocalidade().replace(" ", "%20"));
+        url.append("/").append(endereco.get(0).getUf().replace(" ", "%20"));
+        return url;
     }
     
     
     
-    
+    public void limparCampos(){
+            txtTitulo.clear();
+            txtCEP.clear();
+            txtEndereco.setEditable(true);
+            txtEndereco.clear();  
+            txtDescricao.clear();
+            dateInic.getEditor().clear();
+            dateFim.getEditor().clear();
+            txtHoraInic.clear();
+            txtMinuInic.clear();
+            txtMinFim.clear();
+            txtHoraFim.clear();
+    }
 }
