@@ -18,8 +18,13 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import model.Endereco;
 import model.EventPers;
 import model.Local;
@@ -76,19 +81,7 @@ public class Cadastro_EventosController implements Initializable {
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /*TCC eventosArray = new TCC();
-        if(eventosArray.pegarArrayEventoUsuario() == null){
-           Local local = new Local();
-           
-           txtTitulo.setText(eventosArray.pegarArrayEventoUsuario().get(0).getTitulo());
-           txtCEP.setText("tem que criar ainda");
-           txtEndereco.setText(local.buscaEndereco(1).get(0).getRua() + " - " + local.buscaEndereco(1).get(0).getBairro() + " - " + local.buscaEndereco(1).get(0).getCidade() + " - " + local.buscaEndereco(1).get(0).getEstado());
-           txtDescricao.setText(eventosArray.pegarArrayEventoUsuario().get(0).getDescricao());
-           //txtCEP.setText(Integer.toString(eventosArray.pegarArrayEventoUsuario().get(0).get));
-           
-           //dateInic.setValue();
-           eventosArray.setEventPers(null); 
-        }*/
+      
         // TODO
     } 
     
@@ -96,7 +89,19 @@ public class Cadastro_EventosController implements Initializable {
     //Vai para a Scene agenda
     @FXML
     void mudaTelaAgenda(ActionEvent event) {
-        telaRootAgenda();
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/agenda/Agenda.fxml"));
+            Parent root = loader.load();
+            Scene cena = new Scene(root, 1029, 547);
+
+             Stage window = ((Stage)((Node)event.getSource()).getScene().getWindow());
+
+             window.setScene(cena);
+             window.show(); 
+             window.centerOnScreen();
+        }catch(IOException ex){
+            System.out.println("ERRO: " + ex);
+        }
         limparCampos();
     }
     
@@ -109,42 +114,14 @@ public class Cadastro_EventosController implements Initializable {
     @FXML
     void CarregarEventos(ActionEvent event){
         //cadastra o endereço
-        
-        
-        
-        
-        //variaves para códigos e evento  
-       /* TCC codigos = new TCC();//Codigos
-        EventPers eventsPers = new EventPers();*/
-        
-        //if(eventsPers.buscaEventosUsuario(codigos.pegarCodigo(), codigos.pegarEventoUsuario()) == null){
-            //cadastra Eventos
-            EventPers eventsPersC = new EventPers();
-            eventsPersC.cadastrarEvento(urlCadastroEvento());   
- 
-       /*}else{
-            //Update eventos
-            EventPers eventsPersA = new EventPers();
-            eventsPersA.atualizarEvento(urlAtualizaEvento());
-        }*/
-        
+
+        EventPers eventsPersC = new EventPers();
+        eventsPersC.cadastrarEvento(urlCadastroEvento());   
         
         limparCampos();
     }
     
    
-        
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     //cria a url para cadastro de eventos

@@ -23,6 +23,7 @@ import view.TCC;
  * @author Pedror
  */
 public class EventPers {
+
     private int codigo;
     private String titulo;
     private String data_ini;
@@ -31,11 +32,11 @@ public class EventPers {
     private int cod_user;
     private int cod_local;
     private String cor;  
-
+    private int cep;
     
     
     //Construtores
-    public EventPers(int codigo, String titulo, String data_ini, String data_fim, String descricao, int cod_user, int cod_local, String cor){
+    public EventPers(int codigo, String titulo, String data_ini, String data_fim, String descricao, int cod_user, int cod_local, String cor, int cep){
         this.setCodigo(codigo);
         this.setTitulo(titulo);
         this.setData_ini(data_ini);
@@ -44,6 +45,7 @@ public class EventPers {
         this.setCod_user(cod_user);
         this.setCod_local(cod_local);
         this.setCor(cor);
+        this.setCep(cep);
     }
     
     public EventPers(){   
@@ -103,7 +105,13 @@ public class EventPers {
     public void setCor(String cor) {
         this.cor = cor;
     }
-    
+    public int getCep() {
+        return cep;
+    }
+
+    public void setCep(int cep) {
+        this.cep = cep;
+    }
     
     //Método busca Eventos do usuario
     public ArrayList<EventPers> buscaEventosUsuario(String data, String usuario){
@@ -126,10 +134,12 @@ public class EventPers {
             entrada.close();
             conexao.disconnect();
             
+            
+            
             Gson gson = new Gson();
             JsonObject jso = gson.fromJson(retorno.toString(), JsonObject.class);
             JsonArray jsonArray = jso.getAsJsonArray("dados");
-            
+            System.out.println(retorno);
 
             Type typeDadosEventos = new TypeToken<ArrayList<EventPers>>(){}.getType();
             dadosEventos = gson.fromJson(jsonArray, typeDadosEventos);
@@ -186,82 +196,4 @@ public class EventPers {
         }
     }
     
-    /*
-    //Método busca Eventos do usuario
-    public ArrayList<EventPers> buscaEventosUsuario(int usuario, int codigoEvento){
-        URL rest;
-        ArrayList<EventPers> dadosEventos = null;
-  
-        try{
-            rest = new URL("http://143.106.241.1/cl18463/tcc/api/eventPers/listar/" + Integer.toString(usuario) + "/" + Integer.toString(codigoEvento));
-            HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
-            
-            
-            
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
-            StringBuilder retorno = new StringBuilder();
-            String linha;
-            
-            while((linha = entrada.readLine()) != null){
-                retorno.append(linha);
-            }
-            entrada.close();
-            conexao.disconnect();
-            
-            Gson gson = new Gson();
-            JsonObject jso = gson.fromJson(retorno.toString(), JsonObject.class);
-            JsonArray jsonArray = jso.getAsJsonArray("dados");
-            
-
-            Type typeDadosEventos = new TypeToken<ArrayList<EventPers>>(){}.getType();
-            dadosEventos = gson.fromJson(jsonArray, typeDadosEventos);
-            
-        }catch(IOException ex){
-            System.out.println("ERRO: " + ex);
-        }
-        
-        return dadosEventos;
-    }
-    public void atualizarEvento(StringBuilder url){
-        ///cadastro de eventos
-        URL rest;
-        try{
-            rest = new URL(url.toString());
-            
-            HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
-            StringBuilder retorno = new StringBuilder();
-                
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
-            String linha;
-            while((linha = entrada.readLine()) != null){
-                retorno.append(linha);
-            }
-            
-            
-            entrada.close();
-            conexao.disconnect();
-            
-            Gson gson = new Gson();
-            JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
-            
-            System.out.println(retorno);
-            if(Boolean.parseBoolean(js.get("dados").toString())){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("");
-                alert.setHeaderText("Evento cadastrado com sucesso!");
-                alert.showAndWait();
-            }else{
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("");
-                alert.setHeaderText("Não foi possível criar um novo evento, tente novamente!");
-                alert.showAndWait();
-            }
-            
-        }catch(MalformedURLException ex){
-            System.out.println("ERRO: " + ex);
-        }catch(IOException ex){
-            System.out.println("ERRO: " + ex);
-        }
-    }
-    */
 }

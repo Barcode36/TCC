@@ -19,12 +19,18 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import model.Login;
 import model.Usuario;
 import view.TCC;
 
@@ -102,7 +108,9 @@ public class Login_CadastroController implements Initializable {
     
     
     @FXML
-    void login(ActionEvent event) throws SQLException, ClassNotFoundException {
+    void login(ActionEvent event) throws SQLException, ClassNotFoundException{
+        
+        
         
         URL rest;
         
@@ -133,9 +141,25 @@ public class Login_CadastroController implements Initializable {
                 Type usuarioListaType = new TypeToken<ArrayList<Usuario>>(){}.getType();
                 usuario = gson.fromJson(jsonArray, usuarioListaType);
                 
-                codigoUsuario = usuario.get(0).getCodigo();
+                
+                try{
+                    Login login = new Login();
+                    login.enviaCodigoUsuario(usuario.get(0).getCodigo());
 
-                TCC.telaRootHome(codigoUsuario); 
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/home/ViewHome.fxml"));
+                    Parent root = loader.load();
+                    Scene cena = new Scene(root, 1029, 547);
+
+                    Stage window = ((Stage)((Node)event.getSource()).getScene().getWindow());
+
+                    window.setScene(cena);
+                    window.show();
+                    window.centerOnScreen();
+                    
+                }catch(IOException ex){
+                    System.out.println("ERRO:" + ex);
+                }
+                
             }else{
                 Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("");
@@ -202,22 +226,7 @@ public class Login_CadastroController implements Initializable {
             } catch (IOException ex) {
                 System.out.println("Erro: " + ex);
             }
-            
-            
-            
-            
-            
-            /*try{
-                cadastro = controle.insereCadastro(, txtSenha1.getText(), , txtEmail.getText(), txtTelefone.getText());
-            }catch(Exception ex){
-                ex.printStackTrace();
-            }
-            if(cadastro){
-                Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("");
-                alert.setHeaderText("Cadastro efetuado com sucesso!");
-                alert.showAndWait();
-            }*/
+             
         }
         
     }

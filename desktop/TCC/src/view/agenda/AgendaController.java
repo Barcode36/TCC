@@ -2,6 +2,7 @@ package view.agenda;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,14 +14,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import model.EventPers;
+import model.Login;
 import view.TCC;
 import static view.TCC.telaRootCadastroEventos;
 
@@ -380,7 +386,7 @@ public class AgendaController implements Initializable {
     ///////
     
     
-    TCC usuario = new TCC();
+    Login usuario = new Login();
 
     
     @Override
@@ -434,7 +440,21 @@ public class AgendaController implements Initializable {
     //Vai para a view Perfil
     @FXML
     void vaiViewPerfil(ActionEvent event) {
-        TCC.telaRootHome();
+        
+        try{
+  
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/view/home/ViewHome.fxml"));
+            Parent root = loader.load();
+            Scene cena = new Scene(root, 1029, 547);
+
+            Stage window = ((Stage)((Node)event.getSource()).getScene().getWindow());
+
+            window.setScene(cena);
+            window.show();
+            window.centerOnScreen();
+        }catch(IOException ex){
+            System.out.println("ERRO:" + ex);
+        }
     }
     
     
@@ -443,7 +463,19 @@ public class AgendaController implements Initializable {
     //Muda para a scene de para criar eventos
     @FXML
     void mudaTelaCadastroEventos(ActionEvent event) {
-        telaRootCadastroEventos();  
+        try{
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/view/cadastro_Eventos/Cadastro_Eventos.fxml"));
+            Parent root = loader.load();
+            Scene cena = new Scene(root);
+
+             Stage window = ((Stage)((Node)event.getSource()).getScene().getWindow());
+
+             window.setScene(cena);
+             window.show(); 
+             window.centerOnScreen();
+        }catch(IOException ex){
+            System.out.println("ERRO: " + ex);
+        } 
     }
     
     //Muda para a scene para o update de Eventos
@@ -492,7 +524,7 @@ public class AgendaController implements Initializable {
    
         
         String data = btnAno.getText() + "-" + Integer.toString(converteMes()) + "-" + dia;
-        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegarCodigo()));
+        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegaCodigoUsuario()));
         
         return FXCollections.observableArrayList(eventosUsuario);
     } 
@@ -501,18 +533,28 @@ public class AgendaController implements Initializable {
     //Verifica se a eventos no dia
     public void verificaEventosDia(AnchorPane pane, JFXButton btnDia){
        
+        String dia = "";
+        if(Integer.parseInt(btnDia.getText()) < 9){
+            dia = "0" +btnDia.getText();
+        }else{
+            dia = btnDia.getText();
+        }
+        
         EventPers eventos = new EventPers();
         ArrayList<EventPers> eventosUsuario = null;
-        String data = btnAno.getText() + "-" + converteMes() + "-" + "0"+ btnDia.getText();
+        String data = btnAno.getText() + "-" + converteMes() + "-" + dia;
         System.out.println(data);
-        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegarCodigo()));
-        
+        System.out.println(usuario.pegaCodigoUsuario());
+        eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegaCodigoUsuario()));
         
         System.out.println(eventosUsuario);
-        if(eventosUsuario.size() > 0){
-            pane.setStyle("-fx-background-color: #0768ae;");
-        }else{
+        
+        if(!eventosUsuario.isEmpty()){
             pane.setStyle("-fx-background-color: red;");
+            System.out.println("red");
+        }else{
+            pane.setStyle("-fx-background-color: #0768ae;");
+            System.out.println("normal");
         }
      
         
@@ -985,7 +1027,7 @@ public class AgendaController implements Initializable {
         }   
     }
     
-    //Verificando o dia e setando a cor 
+    //Verificando o dia e seta a cor 
     public void corDiaAtual(JFXButton corDiaAtual, int i, AnchorPane pane){
         if(((i == diaFixo) && (mesAltera == mesFixo -1)) && (anoAltera == anoFixo)){
             corDiaAtual.setStyle("-fx-text-fill: black;"); 
@@ -993,8 +1035,6 @@ public class AgendaController implements Initializable {
             corDiaAtual.setStyle("-fx-text-fill: #FFF;");
             
         }
-        System.out.println(usuario.pegarCodigo());
-        System.out.println("entrou aqui antes");
         verificaEventosDia(pane, corDiaAtual);
     }
     
