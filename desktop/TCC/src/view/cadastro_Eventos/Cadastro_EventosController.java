@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 import model.Endereco;
 import model.EventPers;
 import model.Local;
+import model.Login;
 import view.TCC;
 import static view.TCC.telaRootAgenda;
 
@@ -40,7 +41,7 @@ public class Cadastro_EventosController implements Initializable {
 
     
     
-     @FXML
+    @FXML
     private JFXTextField txtTitulo;
 
     @FXML
@@ -73,16 +74,16 @@ public class Cadastro_EventosController implements Initializable {
     //Endereço
     ArrayList<Endereco> endereco = null;
     
-    
-    
+    private Login login; 
+
     
     
     
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      
         // TODO
+        if(login.pegaTipoEvento() == false)preencheCampos(); 
     } 
     
     
@@ -114,32 +115,46 @@ public class Cadastro_EventosController implements Initializable {
     @FXML
     void CarregarEventos(ActionEvent event){
         //cadastra o endereço
-
-        EventPers eventsPersC = new EventPers();
-        eventsPersC.cadastrarEvento(urlCadastroEvento());   
+        if(login.pegaTipoEvento()){
+            EventPers eventsPersC = new EventPers();
+            eventsPersC.cadastrarEvento(urlCadastroEvento());    
+        }else{
+            
+            
+        }
+         
         
         limparCampos();
     }
     
    
+    public void preencheCampos(){
+
+        txtTitulo.setText(login.pegaDadosEvento().get(0).getTitulo());
+        txtDescricao.setText(login.pegaDadosEvento().get(0).getDescricao());
+        txtCEP.setText(Integer.toString(login.pegaDadosEvento().get(0).getCep()));
+        buscaEnderecoViaCEP(Integer.toString(login.pegaDadosEvento().get(0).getCep()));
+    }
     
     
     //cria a url para cadastro de eventos
     public StringBuilder urlCadastroEvento(){
-        TCC codigo = new TCC();//codigo do usuario
+        Login login = new Login();//codigo do usuario
         
         StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/EventPers/inserir/");
             
         String dataInicio = dateInic.getValue().toString().replace("/", "-") + " " + txtHoraInic.getText() + ":" + txtMinuInic.getText();
         String dataFim = dateFim.getValue().toString().replace("/", "-") + " " + txtHoraFim.getText() + ":" + txtMinFim.getText();
-            
+        
+        
         url.append(txtTitulo.getText().replace(" ", "%20"));
         url.append("/").append(dataInicio.replace(" ", "%20"));
         url.append("/").append(dataFim.replace(" ", "%20"));
         url.append("/").append(txtDescricao.getText().replace(" ", "%20"));
-        url.append("/").append(Integer.toString(codigo.pegarCodigo()));
+        url.append("/").append(Integer.toString(login.pegaCodigoUsuario()));
         url.append("/").append(endereco.get(0).getCep().replace("-", ""));
         
+        System.out.println(url);
         return url;
     }
     
@@ -152,6 +167,7 @@ public class Cadastro_EventosController implements Initializable {
         String dataInicio = dateInic.getValue().toString().replace("/", "-") + " " + txtHoraInic.getText() + ":" + txtMinuInic.getText();
         String dataFim = dateFim.getValue().toString().replace("/", "-") + " " + txtHoraFim.getText() + ":" + txtMinFim.getText();
             
+        
         url.append(Integer.toString(codigos.pegarEventoUsuario()));
         url.append("/").append(txtTitulo.getText().replace(" ", "%20"));
         url.append("/").append(dataInicio.replace(" ", "%20"));
@@ -173,10 +189,13 @@ public class Cadastro_EventosController implements Initializable {
     //Faz a busca do endereço pelo CEP
     @FXML
     void buscaEndereco(ActionEvent event){
+        buscaEnderecoViaCEP(txtCEP.getText());
+    }
+    public void buscaEnderecoViaCEP(String cep){
         URL rest;
         
         try{
-            rest = new URL("https://viacep.com.br/ws/" + txtCEP.getText().replace("-", "") + "/json");
+            rest = new URL("https://viacep.com.br/ws/" + cep.replace("-", "") + "/json");
             HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
             
             StringBuilder retorno = new StringBuilder();
@@ -203,10 +222,6 @@ public class Cadastro_EventosController implements Initializable {
             txtEndereco.setText(endereco.get(0).getLogradouro() + " - " + endereco.get(0).getBairro() + " - " + endereco.get(0).getLocalidade() + " - " + endereco.get(0).getUf());                  
             txtEndereco.setEditable(false);
             
-            Local cadastro = new Local();
-            cadastro.CadastraEndereco(urlCadastroLocal());
-            
-  
         }catch(MalformedURLException ex){
             System.out.println("ERRO: " + ex);
         }
@@ -214,20 +229,7 @@ public class Cadastro_EventosController implements Initializable {
             System.out.println("ERRO: " + ex);
         }
     }
-    
-    public StringBuilder urlCadastroLocal(){
-        StringBuilder url = new StringBuilder("http://143.106.241.1/cl18463/tcc/api/Endereco/inserir/");
-        
-        url.append(endereco.get(0).getCep().replace("-", ""));
-        url.append("/").append(endereco.get(0).getLogradouro().replace(" ", "%20"));
-        url.append("/").append(endereco.get(0).getBairro().replace(" ", "%20"));
-        url.append("/").append(endereco.get(0).getLocalidade().replace(" ", "%20"));
-        url.append("/").append(endereco.get(0).getUf().replace(" ", "%20"));
-        return url;
-    }
-    
-    
-    
+
     public void limparCampos(){
             txtTitulo.clear();
             txtCEP.clear();
@@ -241,4 +243,5 @@ public class Cadastro_EventosController implements Initializable {
             txtMinFim.clear();
             txtHoraFim.clear();
     }
+    
 }

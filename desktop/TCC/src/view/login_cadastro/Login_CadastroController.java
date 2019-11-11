@@ -144,7 +144,7 @@ public class Login_CadastroController implements Initializable {
                 
                 try{
                     Login login = new Login();
-                    login.enviaCodigoUsuario(usuario.get(0).getCodigo());
+                    login.setCodigoUsuario(usuario.get(0).getCodigo());
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/home/ViewHome.fxml"));
                     Parent root = loader.load();

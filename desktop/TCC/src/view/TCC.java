@@ -74,8 +74,8 @@ public class TCC extends Application {
         
         //Cadastro de eventos
         
-        Parent rootCadastroEventos = FXMLLoader.load(getClass().getResource("cadastro_Eventos/Cadastro_Eventos.fxml"));
-        rootCadastroEventosR = new Scene(rootCadastroEventos, 737, 552);
+        //Parent rootCadastroEventos = FXMLLoader.load(getClass().getResource("cadastro_Eventos/Cadastro_Eventos.fxml"));
+        //rootCadastroEventosR = new Scene(rootCadastroEventos, 737, 552);
         
         stage.setScene(scene);
         //stage.setScene(rootCadastroEventosR);

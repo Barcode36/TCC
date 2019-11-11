@@ -1,0 +1,11 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    
+}
+.cards{
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+}

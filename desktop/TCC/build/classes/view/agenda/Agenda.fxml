@@ -423,11 +423,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <TableView fx:id="tabelaEventosDoDia" layoutX="265.0" layoutY="95.0" prefHeight="452.0" prefWidth="278.0">
+            <TableView fx:id="tabelaEventosDoDia" layoutX="265.0" layoutY="405.0" prefHeight="142.0" prefWidth="278.0">
               <columns>
                 <TableColumn fx:id="tbcTitulo" prefWidth="277.0" text="Tutulo" />
               </columns>
             </TableView>
+            <VBox fx:id="vBoxItens" layoutX="269.0" layoutY="109.0" prefHeight="271.0" prefWidth="271.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="addPane" cache="true" depthTest="DISABLE" prefHeight="445.0" prefWidth="777.0" style="-fx-background-color: #fff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

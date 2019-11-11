@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="262.0" style="-fx-background-color: #093dfe;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.cards.CardsEventsController">
+   <children>
+      <JFXButton fx:id="btnEvento" alignment="TOP_LEFT" onAction="#eventosSelecionado" prefHeight="52.0" prefWidth="262.0" style="-fx-border-width: 1; -fx-border-color: #fff;" text="Evento:" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="34.0">
+               <image>
+                  <Image url="@../../../../../../../AppData/Local/Temp/icons8_google_forms_50px_3.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</HBox>
