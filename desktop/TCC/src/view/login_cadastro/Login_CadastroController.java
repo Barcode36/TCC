@@ -220,6 +220,9 @@ public class Login_CadastroController implements Initializable {
                     alert.setHeaderText("Não foi possível realizar o cadastro, tente novamente!");
                     alert.showAndWait();
                 }  
+                paneCadastro.setVisible(false);
+                paneLogin.setVisible(true);
+                paneLogin.toFront();  
                 
             } catch (MalformedURLException ex) { 
                 System.out.println("Erro: " + ex);

@@ -372,9 +372,6 @@ public class AgendaController implements Initializable {
     @FXML
     private TableView<EventPers> tabelaEventosDoDia;
     
-    @FXML
-    private TableColumn<EventPers, String> tbcTitulo;
-    
 
     @FXML
     private VBox vBoxItens = null;
@@ -478,10 +475,11 @@ public class AgendaController implements Initializable {
     @FXML
     void mudaTelaCadastroEventos(ActionEvent event) {
         try{
+            usuario.setaTipoEvento(true);
             javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/view/cadastro_Eventos/Cadastro_Eventos.fxml"));
             Parent root = loader.load();
             Cadastro_EventosController controller = loader.getController();
-            usuario.setTipoEvento(true);
+            
 
             Scene cena = new Scene(root);
             Stage window = ((Stage)((Node)event.getSource()).getScene().getWindow());
@@ -501,16 +499,17 @@ public class AgendaController implements Initializable {
         
         if(login.pegaIndexEvento() != -1){
             try{
+                usuario.setaTipoEvento(false);
+                ArrayList<EventPers> eventoSelecionado = new ArrayList<EventPers>();
+                eventoSelecionado.add((EventPers) eventosUsuario.get(login.pegaIndexEvento()));
+                usuario.setDadosEvento(eventoSelecionado);
+                
                 javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/view/cadastro_Eventos/Cadastro_Eventos.fxml"));
                 Parent root = loader.load();
                 Cadastro_EventosController controller = loader.getController();
-                usuario.setTipoEvento(false);
                 //controller.setDadosEvento((ArrayList<EventPers>) eventosUsuario.listIterator(login.pegaCodigoEvento()));
 
-                ArrayList<EventPers> eventoSelecionado = new ArrayList<EventPers>();
-                eventoSelecionado.add((EventPers) eventosUsuario.get(login.pegaIndexEvento()));
-
-                usuario.setDadosEvento(eventoSelecionado);
+                
                 Scene cena = new Scene(root);
                 Stage window = ((Stage)((Node)event.getSource()).getScene().getWindow());
 
@@ -530,7 +529,24 @@ public class AgendaController implements Initializable {
          
     }
     
-    
+    @FXML
+    void excluirEvento(ActionEvent event) {
+        Login login = new Login();
+        EventPers eventPers = new EventPers();
+        if(login.pegaIndexEvento() != -1){
+            eventPers.excluirEvento(eventosUsuario.get(login.pegaIndexEvento()).getCodigo());
+            vBoxItens.getChildren().clear();
+            login.setaIndexEvento(-1);
+            calendario();
+
+        }else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("");
+            alert.setHeaderText("nenhum evento foi selecionado!");
+            alert.setContentText("Selecione um evento!");
+            alert.showAndWait();
+        }
+    }
     
     
     
@@ -539,7 +555,8 @@ public class AgendaController implements Initializable {
     public void eventosdoDia(ActionEvent event)  {
         
         JFXButton botao =  (JFXButton) event.getSource();
-        
+
+
         
         
         eventosUsuario = null;
@@ -566,24 +583,15 @@ public class AgendaController implements Initializable {
                     controller.setbtnEvento(eventosUsuario.get(0).getTitulo());
                 }
 
-                initTable(botao.getText()); 
+                //initTable(botao.getText()); 
             }
         }catch(IOException ex){
             System.out.println("ERRO: " + ex);
         }
         
     }
-
     
-    //adiciona eventos do dia a tabela 
-    public void initTable(String dia){
-        
-        tbcTitulo.setCellValueFactory(new PropertyValueFactory<EventPers, String>("Titulo"));
-  
-        
-        tabelaEventosDoDia.setItems(atualizaTabela(dia));
-        
-    }
+   
     
     public ObservableList<EventPers> atualizaTabela(String dia){
         
@@ -604,6 +612,8 @@ public class AgendaController implements Initializable {
         
         return FXCollections.observableArrayList(eventosUsuario);
     } 
+    
+    
     public ArrayList<EventPers> buscaEventosDoDia(String dia){
         
         
@@ -641,11 +651,10 @@ public class AgendaController implements Initializable {
         EventPers eventos = new EventPers();
         ArrayList<EventPers> eventosUsuario = null;
         String data = btnAno.getText() + "-" + converteMes() + "-" + dia;
-        System.out.println(data);
-        System.out.println(usuario.pegaCodigoUsuario());
+
+        
         eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegaCodigoUsuario()));
         
-        System.out.println(eventosUsuario);
         
         if(!eventosUsuario.isEmpty()){
             pane.setStyle("-fx-background-color: red;");
@@ -1170,7 +1179,7 @@ public class AgendaController implements Initializable {
         btnMes.setVisible(false);
         btnAno.setVisible(false);
         paneAno.setVisible(true);
-        initTable("0");
+        //initTable("0");
     }
 
     //Button Selecioan Mês
@@ -1180,7 +1189,7 @@ public class AgendaController implements Initializable {
         btnMes.setVisible(false);
         btnAno.setVisible(false);
         paneMes.setVisible(true);
-        initTable("0");
+        //initTable("0");
     }
     
     

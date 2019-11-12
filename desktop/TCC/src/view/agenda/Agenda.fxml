@@ -7,8 +7,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -153,7 +151,7 @@
                      </children>
                   </HBox>
                   <JFXButton alignment="BASELINE_RIGHT" layoutX="57.0" layoutY="276.0" onAction="#mudaTelaCadastroEventos" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Novo" textFill="WHITE" />
-                  <JFXButton alignment="BASELINE_RIGHT" layoutX="59.0" layoutY="316.0" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Excluir" textFill="WHITE" />
+                  <JFXButton alignment="BASELINE_RIGHT" layoutX="59.0" layoutY="316.0" onAction="#excluirEvento" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Excluir" textFill="WHITE" />
                   <JFXButton alignment="BASELINE_RIGHT" layoutX="57.0" layoutY="356.0" onAction="#editaEventos" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Editar" textFill="WHITE" />
                   <JFXButton alignment="BASELINE_RIGHT" layoutX="57.0" layoutY="396.0" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #0747ae;" text="Visualizar" textFill="WHITE" />
                </children>
@@ -423,12 +421,8 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <TableView fx:id="tabelaEventosDoDia" layoutX="265.0" layoutY="405.0" prefHeight="142.0" prefWidth="278.0">
-              <columns>
-                <TableColumn fx:id="tbcTitulo" prefWidth="277.0" text="Tutulo" />
-              </columns>
-            </TableView>
-            <VBox fx:id="vBoxItens" layoutX="269.0" layoutY="109.0" prefHeight="271.0" prefWidth="271.0" />
+            <VBox fx:id="vBoxItens" layoutX="269.0" layoutY="109.0" prefHeight="436.0" prefWidth="271.0" />
+            <Separator layoutX="265.0" layoutY="95.0" prefHeight="2.0" prefWidth="278.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="addPane" cache="true" depthTest="DISABLE" prefHeight="445.0" prefWidth="777.0" style="-fx-background-color: #fff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

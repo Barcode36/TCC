@@ -1,6 +1,18 @@
 package model;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 /**
  *
@@ -70,5 +82,46 @@ public class Usuario {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+    
+    
+    
+    
+    public ArrayList<Usuario> buscaDadosUsuario(int codigoUsuario, int codigoEvento){
+        ArrayList<Usuario> dadosUsuario = new ArrayList<Usuario>();
+        URL url;
+        try{
+            url = new URL("http://143.106.241.1/cl18463/tcc/api/usuario/buscar/" + Integer.toString(codigoUsuario) + "/" + Integer.toString(codigoEvento));
+            HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+            
+            
+            
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
+            StringBuilder retorno = new StringBuilder();
+            String linha;
+            
+            while((linha = entrada.readLine()) != null){
+                retorno.append(linha);
+            }
+            entrada.close();
+            conexao.disconnect();
+            
+            
+            
+            Gson gson = new Gson();
+            JsonObject jso = gson.fromJson(retorno.toString(), JsonObject.class);
+            JsonArray jsonArray = jso.getAsJsonArray("dados");
+
+            Type typeDadosEventos = new TypeToken<ArrayList<EventPers>>(){}.getType();
+            dadosUsuario = gson.fromJson(jsonArray, typeDadosEventos);
+        }catch(MalformedURLException ex){
+            System.out.println("ERRO: " + ex);
+        }catch(IOException ex){
+            System.out.println("ERRO: " + ex);
+        }
+        
+        
+        
+        return dadosUsuario;
+    } 
 }
 

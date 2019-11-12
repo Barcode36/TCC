@@ -11,7 +11,7 @@
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="34.0">
                <image>
-                  <Image url="@../../../../../../../AppData/Local/Temp/icons8_google_forms_50px_3.png" />
+                  <Image url="@../img/formulario.png" />
                </image>
             </ImageView>
          </graphic>

@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.home.ViewHomeController">
    <center>
       <AnchorPane id="AnchorPane" fx:id="panePai" prefHeight="521.0" prefWidth="1023.0" style="-fx-background-color: #fff;">
@@ -175,7 +174,7 @@
                   </JFXButton>
                   <Separator layoutX="264.0" layoutY="55.0" prefHeight="2.0" prefWidth="514.0" AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="0.0" />
                   <AnchorPane layoutX="276.0" layoutY="7.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="39.0" styleClass="fotoPerfil" stylesheets="@ViewHomeCss.css" />
-                  <Label layoutX="436.0" layoutY="128.0" prefHeight="30.0" prefWidth="282.0" text="Elias Pedro Ribeiro">
+                  <Label fx:id="txtNomeUsuario" layoutX="436.0" layoutY="128.0" prefHeight="30.0" prefWidth="282.0" text="Elias Pedro Ribeiro">
                      <font>
                         <Font name="Cambria Italic" size="24.0" />
                      </font>
@@ -206,7 +205,7 @@
                         <Image url="@../img/calendario%20(2).png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="474.0" layoutY="185.0" prefHeight="17.0" prefWidth="27.0" text="1" />
+                  <Label fx:id="txtEventos" alignment="CENTER" contentDisplay="CENTER" layoutX="474.0" layoutY="185.0" prefHeight="17.0" prefWidth="27.0" text="1" />
                   <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="519.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/grupos%20(4).png" />

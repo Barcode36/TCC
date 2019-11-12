@@ -14,6 +14,8 @@ import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -74,7 +76,7 @@ public class Cadastro_EventosController implements Initializable {
     //Endereço
     ArrayList<Endereco> endereco = null;
     
-    private Login login; 
+    private Login login = new Login(); 
 
     
     
@@ -117,14 +119,15 @@ public class Cadastro_EventosController implements Initializable {
         //cadastra o endereço
         if(login.pegaTipoEvento()){
             EventPers eventsPersC = new EventPers();
-            eventsPersC.cadastrarEvento(urlCadastroEvento());    
+            eventsPersC.cadastrarEvento(urlCadastroEvento(), true);    
         }else{
-            
-            
+            EventPers eventsPersC = new EventPers();
+            StringBuilder url = new StringBuilder(urlCadastroEvento().toString().replace("inserir", "atualizar").subSequence(0,57)).append(login.pegaDadosEvento().get(0).getCodigo()).append("/");
+            //urlCadastroEvento().replace(1, 2, "atualizar");
+            eventsPersC.cadastrarEvento(url.append(urlCadastroEvento().toString().replace("inserir", "atualizar").subSequence(57, urlCadastroEvento().toString().replace("inserir", "atualizar").length())), false);       
         }
-         
-        
         limparCampos();
+        login.setaTipoEvento(true);
     }
     
    
@@ -134,6 +137,15 @@ public class Cadastro_EventosController implements Initializable {
         txtDescricao.setText(login.pegaDadosEvento().get(0).getDescricao());
         txtCEP.setText(Integer.toString(login.pegaDadosEvento().get(0).getCep()));
         buscaEnderecoViaCEP(Integer.toString(login.pegaDadosEvento().get(0).getCep()));
+        String dataInicio = login.pegaDadosEvento().get(0).getData_ini().substring(0,10);
+        String dataFim = login.pegaDadosEvento().get(0).getData_fim().substring(0, 10);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        dateInic.setValue(LocalDate.parse(dataInicio, formatter));
+        dateFim.setValue(LocalDate.parse(dataInicio, formatter));
+        txtHoraInic.setText(login.pegaDadosEvento().get(0).getData_ini().substring(11, 13));
+        txtHoraFim.setText(login.pegaDadosEvento().get(0).getData_ini().substring(11, 13));
+        txtMinuInic.setText(login.pegaDadosEvento().get(0).getData_ini().substring(14, 16));
+        txtMinFim.setText(login.pegaDadosEvento().get(0).getData_ini().substring(14, 16));
     }
     
     
@@ -154,7 +166,6 @@ public class Cadastro_EventosController implements Initializable {
         url.append("/").append(Integer.toString(login.pegaCodigoUsuario()));
         url.append("/").append(endereco.get(0).getCep().replace("-", ""));
         
-        System.out.println(url);
         return url;
     }
     

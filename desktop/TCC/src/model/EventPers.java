@@ -139,7 +139,6 @@ public class EventPers {
             Gson gson = new Gson();
             JsonObject jso = gson.fromJson(retorno.toString(), JsonObject.class);
             JsonArray jsonArray = jso.getAsJsonArray("dados");
-            System.out.println(retorno);
 
             Type typeDadosEventos = new TypeToken<ArrayList<EventPers>>(){}.getType();
             dadosEventos = gson.fromJson(jsonArray, typeDadosEventos);
@@ -151,7 +150,7 @@ public class EventPers {
         return dadosEventos;
     }
     
-    public void cadastrarEvento(StringBuilder url){
+    public void cadastrarEvento(StringBuilder url, boolean rerificaAcao){
         ///cadastro de eventos
         URL rest;
         try{
@@ -171,23 +170,76 @@ public class EventPers {
             conexao.disconnect();
             
             Gson gson = new Gson();
-            System.out.println(url);
-            System.out.println(retorno);
             
+            JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
+            if(rerificaAcao){
+               if(Boolean.parseBoolean(js.get("dados").toString())){
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("");
+                    alert.setHeaderText("Evento cadastrado com sucesso!");
+                    alert.showAndWait();
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("");
+                    alert.setHeaderText("Não foi possível criar um novo evento, tente novamente!");
+                    alert.showAndWait();
+                } 
+            }else{
+                if(Boolean.parseBoolean(js.get("dados").toString())){
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("");
+                    alert.setHeaderText("Evento atualizado com sucesso!");
+                    alert.showAndWait();
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("");
+                    alert.setHeaderText("Não foi possível atualizar o evento, tente novamente!");
+                    alert.showAndWait();
+                } 
+            }
+                
+            
+        }catch(MalformedURLException ex){
+            System.out.println("ERRO: " + ex);
+        }catch(IOException ex){
+            System.out.println("ERRO: " + ex);
+        }
+    }
+    
+    //Método para excluir evento
+    public void excluirEvento(int codigo){
+        try{
+            URL url = new URL("http://143.106.241.1/cl18463/tcc/api/EventPers/deletar/" + Integer.toString(codigo));
+            
+            HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+            StringBuilder retorno = new StringBuilder();
+                
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
+            String linha;
+            while((linha = entrada.readLine()) != null){
+                retorno.append(linha);
+            }
+            
+            
+            entrada.close();
+            conexao.disconnect();
+            
+            Gson gson = new Gson();
             
             JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
             
             if(Boolean.parseBoolean(js.get("dados").toString())){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("");
-                alert.setHeaderText("Evento cadastrado com sucesso!");
+                alert.setHeaderText("Evento deletado com sucesso!");
                 alert.showAndWait();
             }else{
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("");
-                alert.setHeaderText("Não foi possível criar um novo evento, tente novamente!");
+                alert.setHeaderText("Não foi possível excluir o evento, tente novamente!");
                 alert.showAndWait();
             }
+            
             
         }catch(MalformedURLException ex){
             System.out.println("ERRO: " + ex);

@@ -53,7 +53,6 @@ public class CardsEventsController implements Initializable {
     public void eventosSelecionado(ActionEvent event) {
         Login login = new Login();
         login.setaCodigoEvento(posicao);
-        System.out.println(Integer.toString(posicao));
     }
             
             

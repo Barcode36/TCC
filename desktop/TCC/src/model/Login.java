@@ -13,13 +13,16 @@ public class Login {
     private static int codigoEvento;
    
     
+    //para verificar o tipo de evento do button carregar da class cadastro_evento
+    private static boolean tipoEvento;
     
-     //Endereço
+    //Endereço
     private static ArrayList<Endereco> endereco = null;
     
-    private static boolean tipoEvento;
-    private static ArrayList<EventPers> dadosEvento;
     
+    private static ArrayList<EventPers> dadosEvento = null;
+    
+
     
     public static boolean isTipoEvento() {
         return tipoEvento;
@@ -56,6 +59,10 @@ public class Login {
         return codigoEvento;
     }
     
+    public  void setaIndexEvento(int index){
+        Login.codigoEvento = index;
+    }
+    
     public void setaCodigoEvento(int codigoEvento){
         this.codigoEvento = codigoEvento;
     }
@@ -74,5 +81,9 @@ public class Login {
     
     public ArrayList<EventPers> pegaDadosEvento(){
         return dadosEvento;
+    }
+    
+    public void setaTipoEvento(boolean tipoEvento){
+        this.tipoEvento = tipoEvento;
     }
 }

@@ -65,12 +65,12 @@ public class TCC extends Application {
         Scene scene = new Scene(root); 
         
         // View Home
-        Parent rootHome = FXMLLoader.load(getClass().getResource("home/ViewHome.fxml"));
-        rootHomeR = new Scene(rootHome, 1029, 547);
+        // Parent rootHome = FXMLLoader.load(getClass().getResource("home/ViewHome.fxml"));
+        //rootHomeR = new Scene(rootHome, 1029, 547);
          
         //View Agenda 
-        Parent rootAgenda = FXMLLoader.load(getClass().getResource("agenda/Agenda.fxml"));
-        rootAgendaR = new Scene(rootAgenda, 1029, 547);
+        //Parent rootAgenda = FXMLLoader.load(getClass().getResource("agenda/Agenda.fxml"));
+        //rootAgendaR = new Scene(rootAgenda, 1029, 547);
         
         //Cadastro de eventos
         

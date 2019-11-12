@@ -23,20 +23,20 @@ import view.TCC;
  */
 public class ViewHomeController implements Initializable {
     
-    @FXML
-    private AnchorPane panePai;
+   @FXML
+   private AnchorPane panePai;
 
-    @FXML
-    private JFXButton btnAdd;
-    
-    @FXML
-    private AnchorPane addPane;
+   @FXML
+   private JFXButton btnAdd;
     
    @FXML
-    private JFXButton btnRemove;
+   private AnchorPane addPane;
+    
+   @FXML
+   private JFXButton btnRemove;
    
    @FXML
-    private JFXButton btnMinimizar;
+   private JFXButton btnMinimizar;
 
    @FXML
    private JFXButton btnMaximizar;
@@ -45,17 +45,22 @@ public class ViewHomeController implements Initializable {
    private JFXButton btnFechar;
    
    @FXML
-    private JFXButton btnOptions;
+   private JFXButton btnOptions;
    
    @FXML
-    private AnchorPane paneOptions;
+   private AnchorPane paneOptions;
    
    @FXML
-    private AnchorPane paneHome;
+   private AnchorPane paneHome;
    
    @FXML
-    private JFXButton btnAgenda;
+   private JFXButton btnAgenda;
    
+   @FXML
+   private Label txtNomeUsuario;
+
+   @FXML
+   private Label txtEventos;
    
    //Métodos minímizar, maximizar e fechar
    @FXML
