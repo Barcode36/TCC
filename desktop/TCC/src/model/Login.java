@@ -19,6 +19,7 @@ public class Login {
     //Endereço
     private static ArrayList<Endereco> endereco = null;
     
+    private static ArrayList<Usuario> dadosUsuario = null;
     
     private static ArrayList<EventPers> dadosEvento = null;
     
@@ -37,6 +38,12 @@ public class Login {
         Login.dadosEvento = dadosEvento;
     }
     
+    public void setaDadosUSuario(ArrayList<Usuario> dadosUsuario){
+        this.dadosUsuario = dadosUsuario;
+    }
+    public ArrayList<Usuario> pegaDadosUsuario(){
+        return dadosUsuario;
+    }
     
     
     
@@ -85,5 +92,9 @@ public class Login {
     
     public void setaTipoEvento(boolean tipoEvento){
         this.tipoEvento = tipoEvento;
+    }
+
+    public int pegaCodigoEvento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

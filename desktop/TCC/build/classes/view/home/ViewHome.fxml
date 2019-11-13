@@ -233,8 +233,7 @@
                </graphic>
             </JFXButton>
             <Separator layoutX="264.0" layoutY="55.0" prefHeight="2.0" prefWidth="514.0" AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="0.0" />
-            <AnchorPane layoutX="276.0" layoutY="7.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="39.0" styleClass="fotoPerfil" stylesheets="@ViewHomeCss.css" />
-            <Label layoutX="331.0" layoutY="18.0" prefHeight="3.0" prefWidth="156.0" text="Elias Pedro Ribeiro">
+            <Label fx:id="txtNomeUsuario1" layoutX="331.0" layoutY="18.0" prefHeight="3.0" prefWidth="156.0" text="Elias Pedro Ribeiro">
                <font>
                   <Font name="Cambria" size="14.0" />
                </font>
@@ -257,11 +256,6 @@
                               <Font name="Cambria Italic" size="24.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="fotoPerfil" fitHeight="134.0" fitWidth="125.0" layoutX="28.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/Elias1.png" />
-                           </image>
-                        </ImageView>
                         <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="168.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/grupos%20(3).png" />
@@ -286,10 +280,20 @@
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="296.0" layoutY="39.0" prefHeight="17.0" prefWidth="27.0" text="3" />
+                        <ImageView fx:id="fotoPerfil" fitHeight="131.0" fitWidth="125.0" layoutX="21.0" layoutY="-65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/Elias1.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
+            <ImageView fx:id="fotoPerfil1" fitHeight="40.0" fitWidth="39.0" layoutX="281.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Elias1.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

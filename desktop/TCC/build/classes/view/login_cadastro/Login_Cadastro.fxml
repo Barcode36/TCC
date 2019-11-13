@@ -23,9 +23,9 @@
                <children>
                   <AnchorPane layoutX="439.0" prefHeight="506.0" prefWidth="416.0" style="-fx-background-color: #093dfe;;">
                      <children>
-                        <ImageView fitHeight="68.0" fitWidth="86.0" layoutX="173.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="138.0">
+                        <ImageView fitHeight="68.0" fitWidth="86.0" layoutX="165.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="139.0">
                            <image>
-                              <Image url="@../img/iconCalender.png" />
+                              <Image url="@../img/logo2.png" />
                            </image>
                         </ImageView>
                         <Label layoutX="176.0" layoutY="206.0" text="AMGEN" textFill="WHITE">
@@ -99,19 +99,22 @@
                   <JFXButton fx:id="btnCadastrar" layoutX="267.0" layoutY="456.0" onAction="#cadastrar" prefHeight="25.0" prefWidth="86.0" styleClass="butoonEmail" stylesheets="@login_cadastro.css" text="Cadastrar" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paneLogin" prefHeight="506.0" prefWidth="842.0" style="-fx-background-color: #fff;">
+            <AnchorPane fx:id="paneLogin" prefHeight="506.0" prefWidth="855.0" style="-fx-background-color: #fff;">
                <children>
-                  <AnchorPane prefHeight="506.0" prefWidth="416.0" style="-fx-background-color: #093dfe;" />
+                  <AnchorPane prefHeight="506.0" prefWidth="416.0" style="-fx-background-color: #093dfe;">
+                     <children>
+                        <ImageView fitHeight="68.0" fitWidth="86.0" layoutX="169.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/logo2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                   <Label layoutX="187.0" layoutY="216.0" text="AMGEN" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI" size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="68.0" fitWidth="86.0" layoutX="185.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/iconCalender.png" />
-                     </image>
-                  </ImageView>
                   <Label layoutX="120.0" layoutY="239.0" text="Viva sem se preocupar" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI" size="20.0" />
@@ -123,11 +126,6 @@
                      </font>
                   </Label>
                   <Button fx:id="btnIrcadastro" layoutX="427.0" layoutY="466.0" mnemonicParsing="false" onAction="#vaiTelaCadastro" style="-fx-background-color: #fff;" text="CADASTRE-SE" textFill="#5484ff">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="752.0" layoutY="466.0" mnemonicParsing="false" style="-fx-background-color: #fff;" text="DOWNLOAD APP" textFill="#5484ff">
                      <font>
                         <Font size="11.0" />
                      </font>
@@ -156,7 +154,12 @@
                   <JFXPasswordField fx:id="txtSenha" layoutX="509.0" layoutY="239.0" prefHeight="25.0" prefWidth="275.0" promptText="Senha" style="-fx-prompt-text-fill: #bbaeae;" unFocusColor="#bbaeae" />
                   <JFXTextField fx:id="txtUsuario" layoutX="509.0" layoutY="182.0" prefHeight="25.0" prefWidth="275.0" promptText="Usuário" style="-fx-prompt-text-fill: #bbaeae;" unFocusColor="#bbaeae" />
                   <JFXButton fx:id="btnEntrar" layoutX="699.0" layoutY="297.0" onAction="#login" prefHeight="25.0" prefWidth="85.0" styleClass="butoon" stylesheets="@login_cadastro.css" text="Entrar" />
-                  <JFXButton layoutX="508.0" layoutY="400.0" prefHeight="25.0" prefWidth="275.0" styleClass="butoonEmail" stylesheets="@login_cadastro.css" text="Button" />
+                  <JFXButton layoutX="508.0" layoutY="400.0" prefHeight="25.0" prefWidth="275.0" styleClass="butoonEmail" stylesheets="@login_cadastro.css" text="Entrar com E-mail" />
+                  <ImageView fitHeight="23.0" fitWidth="33.0" layoutX="558.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/iconEmail2.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>

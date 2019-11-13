@@ -33,6 +33,7 @@ import javafx.stage.Stage;
 import model.Login;
 import model.Usuario;
 import view.TCC;
+import view.home.ViewHomeController;
 
 
 /**
@@ -151,8 +152,11 @@ public class Login_CadastroController implements Initializable {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/home/ViewHome.fxml"));
                     Parent root = loader.load();
                     Scene cena = new Scene(root, 935, 521);
-
                     
+                    login.setaDadosUSuario(usuario);
+                    
+                    ViewHomeController controller = loader.getController();
+                    controller.initialize(usuario);
                     
                     Stage window = ((Stage)((Node)event.getSource()).getScene().getWindow());
 
@@ -196,6 +200,9 @@ public class Login_CadastroController implements Initializable {
                 url.append("/").append(txtSenha1.getText());
                 url.append("/").append(txtTelefone.getText());
                 rest = new URL(url.toString());
+                
+                System.out.println(url.toString());
+                
                 HttpURLConnection conexao = (HttpURLConnection) rest.openConnection();
 
                 StringBuilder retorno = new StringBuilder();
@@ -218,15 +225,25 @@ public class Login_CadastroController implements Initializable {
                     alert.setTitle("");
                     alert.setHeaderText("Cadastro efetuado com sucesso!");
                     alert.showAndWait();
+                    
+                    
+                    /*txtNome.clear();
+                    txtUsuarioCa.clear();
+                    txtEmail.clear();
+                    txtSenha1.clear();
+                    txtSenha2.clear();
+                    txtTelefone.clear();*/
+                    
+                    paneCadastro.setVisible(false);
+                    paneLogin.setVisible(true);
+                    paneLogin.toFront();  
                 }else{
                     Alert alert = new Alert(AlertType.WARNING);
                     alert.setTitle("");
                     alert.setHeaderText("Não foi possível realizar o cadastro, tente novamente!");
                     alert.showAndWait();
                 }
-                paneCadastro.setVisible(false);
-                paneLogin.setVisible(true);
-                paneLogin.toFront();  
+                
                 
             } catch (MalformedURLException ex) { 
                 System.out.println("Erro: " + ex);

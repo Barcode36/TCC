@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,12 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Usuario;
 import view.TCC;
 
 /**
@@ -61,6 +62,9 @@ public class ViewHomeController implements Initializable {
    
    @FXML
    private Label txtNomeUsuario;
+   
+   @FXML
+   private Label txtNomeUsuario1;
 
    @FXML
    private Label txtEventos;
@@ -68,8 +72,10 @@ public class ViewHomeController implements Initializable {
    @FXML
    private ImageView fotoPerfil;
    
+   @FXML
+   private ImageView fotoPerfil1;
    
-   
+  
    
    
    //Métodos minímizar, maximizar e fechar
@@ -131,15 +137,37 @@ public class ViewHomeController implements Initializable {
         }       
     }
     
-    @Override
+    public void initialize(ArrayList<Usuario> dadosUsuario) {
+        //TUDO
+        String path = "";
+        if(dadosUsuario.get(0).getFoto() == null){
+           path = "http://143.106.241.1/cl18463/tcc/files/views/agenda/imgUser/avatar.png" ;
+        }else{
+            path = "http://143.106.241.1/cl18463/tcc/files/views/agenda/imgUser/" + dadosUsuario.get(0).getFoto();
+        }
+        System.out.println(dadosUsuario.get(0).getFoto());
+        
+        Image image = new Image(path);
+        fotoPerfil.setImage(image);
+        fotoPerfil.setPreserveRatio(true);
+        
+        fotoPerfil1.setImage(image);
+        fotoPerfil1.setPreserveRatio(true);
+       
+        txtNomeUsuario.setText(dadosUsuario.get(0).getNome());
+        txtNomeUsuario1.setText(dadosUsuario.get(0).getNome());
+      
+        
+        
+        
+        
+
+    } 
     public void initialize(URL url, ResourceBundle rb) {
         //TUDO
         String path = "http://143.106.241.1/cl18463/tcc/files/views/agenda/imgUser/c7fbed3fbcb1eca9ee24a63871a23b2a.jpg";
         Image image = new Image(path);
         fotoPerfil.setImage(image);
         fotoPerfil.setPreserveRatio(true);
-        
-        
-
-    }     
+    }  
 }

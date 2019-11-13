@@ -38,6 +38,10 @@ public class Usuario {
         this.setTelefone(telefone);
         this.setFoto(foto);
     }
+    
+    public Usuario(){
+        
+    }
 
     //Métodos getters e setters
     public int getCodigo() {
@@ -87,32 +91,32 @@ public class Usuario {
     
     
     public ArrayList<Usuario> buscaDadosUsuario(int codigoUsuario){
-        ArrayList<Usuario> dadosUsuario = new ArrayList<Usuario>();
+        ArrayList<Usuario> dadosUsuario = null;
         URL url;
+        System.out.println(codigoUsuario);
         try{
             url = new URL("http://143.106.241.1/cl18463/tcc/api/usuario/buscar/" + Integer.toString(codigoUsuario));
-            HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+           HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
             
-            
+            StringBuilder retorno = new StringBuilder();
             
             BufferedReader entrada = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
-            StringBuilder retorno = new StringBuilder();
             String linha;
-            
             while((linha = entrada.readLine()) != null){
                 retorno.append(linha);
             }
             entrada.close();
             conexao.disconnect();
             
-            
-            
             Gson gson = new Gson();
-            JsonObject jso = gson.fromJson(retorno.toString(), JsonObject.class);
-            JsonArray jsonArray = jso.getAsJsonArray("dados");
+            System.out.println(retorno);
+            JsonObject js = gson.fromJson(retorno.toString(), JsonObject.class);
+            JsonArray jsonArray = js.getAsJsonArray("dados");
+            
 
-            Type typeDadosEventos = new TypeToken<ArrayList<EventPers>>(){}.getType();
-            dadosUsuario = gson.fromJson(jsonArray, typeDadosEventos);
+
+            Type typeDadosUsuario = new TypeToken<ArrayList<Usuario>>(){}.getType();
+            dadosUsuario = gson.fromJson(jsonArray, typeDadosUsuario);
         }catch(MalformedURLException ex){
             System.out.println("ERRO: " + ex);
         }catch(IOException ex){

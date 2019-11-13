@@ -123,7 +123,7 @@ public class Cadastro_EventosController implements Initializable {
         }else{
             EventPers eventsPersC = new EventPers();
             StringBuilder url = new StringBuilder(urlCadastroEvento().toString().replace("inserir", "atualizar").subSequence(0,57)).append(login.pegaDadosEvento().get(0).getCodigo()).append("/");
-            //urlCadastroEvento().replace(1, 2, "atualizar");
+            urlCadastroEvento().replace(1, 2, "atualizar");
             eventsPersC.cadastrarEvento(url.append(urlCadastroEvento().toString().replace("inserir", "atualizar").subSequence(57, urlCadastroEvento().toString().replace("inserir", "atualizar").length())), false);       
         }
         limparCampos();

@@ -30,10 +30,12 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import model.EventPers;
 import model.Login;
+import model.Usuario;
 import view.TCC;
 import static view.TCC.telaRootCadastroEventos;
 import view.cadastro_Eventos.Cadastro_EventosController;
 import view.cards.CardsEventsController;
+import view.home.ViewHomeController;
 
 
 /**
@@ -457,6 +459,11 @@ public class AgendaController implements Initializable {
             javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/view/home/ViewHome.fxml"));
             Parent root = loader.load();
             Scene cena = new Scene(root, 1029, 547);
+            ViewHomeController controller = loader.getController();
+           
+            
+            
+            controller.initialize(usuario.pegaDadosUsuario());
 
             Stage window = ((Stage)((Node)event.getSource()).getScene().getWindow());
 
@@ -535,7 +542,7 @@ public class AgendaController implements Initializable {
         EventPers eventPers = new EventPers();
         if(login.pegaIndexEvento() != -1){
             eventPers.excluirEvento(eventosUsuario.get(login.pegaIndexEvento()).getCodigo());
-            vBoxItens.getChildren().clear();
+            vBoxItens.getChildren().remove(login.pegaIndexEvento());
             login.setaIndexEvento(-1);
             calendario();
 
@@ -655,9 +662,18 @@ public class AgendaController implements Initializable {
         
         eventosUsuario = eventos.buscaEventosUsuario(data, Integer.toString(usuario.pegaCodigoUsuario()));
         
-        
         if(!eventosUsuario.isEmpty()){
-            pane.setStyle("-fx-background-color: red;");
+            if((Integer.parseInt(dia) == diaFixo) && (converteMes() == mesFixo) && (anoAltera == anoFixo)){
+                pane.setStyle("-fx-background-color: #00ff00;");
+            }else if((Integer.parseInt(dia) > diaFixo) && (converteMes() >= mesFixo) && (anoAltera >= anoFixo) ){
+                pane.setStyle("-fx-background-color: orange;");
+            }else{
+                pane.setStyle("-fx-background-color: red;");
+            }
+            
+            
+            
+            
         }else{
             pane.setStyle("-fx-background-color: #0768ae;");
         }
@@ -1133,9 +1149,64 @@ public class AgendaController implements Initializable {
     }
     
     //Verificando o dia e seta a cor 
-    public void corDiaAtual(JFXButton corDiaAtual, int i, AnchorPane pane){
-        if(((i == diaFixo) && (mesAltera == mesFixo -1)) && (anoAltera == anoFixo)){
+    public void corDiaAtual(JFXButton corDiaAtual, int p, AnchorPane pane){
+        if(((p == diaFixo) && (mesAltera == mesFixo -1)) && (anoAltera == anoFixo)){
             corDiaAtual.setStyle("-fx-text-fill: black;"); 
+            
+            
+            JFXButton botao =  corDiaAtual;
+
+
+
+
+            eventosUsuario = null;
+            eventosUsuario = buscaEventosDoDia(botao.getText());
+
+            try{
+                if(!eventosUsuario.isEmpty() || botao.getText() != ""){
+                    Login login = new Login();
+                    login.setaCodigoEvento(-1);
+                }
+                if(botao.getText() != ""){
+
+
+
+                    vBoxItens.getChildren().clear();
+                    for(int i = 0; i < eventosUsuario.size(); i++){
+
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/cards/CardsEvents.fxml"));
+
+                        Parent root = loader.load();
+                        vBoxItens.getChildren().add(root);
+                        CardsEventsController controller = loader.<CardsEventsController>getController();
+                        controller.setPosicao(i);
+                        controller.setbtnEvento(eventosUsuario.get(i).getTitulo());
+                    }
+
+                    //initTable(botao.getText()); 
+                }
+            }catch(IOException ex){
+                System.out.println("ERRO: " + ex);
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         }else{
             corDiaAtual.setStyle("-fx-text-fill: #FFF;");
             
