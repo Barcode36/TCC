@@ -86,11 +86,11 @@ public class Usuario {
     
     
     
-    public ArrayList<Usuario> buscaDadosUsuario(int codigoUsuario, int codigoEvento){
+    public ArrayList<Usuario> buscaDadosUsuario(int codigoUsuario){
         ArrayList<Usuario> dadosUsuario = new ArrayList<Usuario>();
         URL url;
         try{
-            url = new URL("http://143.106.241.1/cl18463/tcc/api/usuario/buscar/" + Integer.toString(codigoUsuario) + "/" + Integer.toString(codigoEvento));
+            url = new URL("http://143.106.241.1/cl18463/tcc/api/usuario/buscar/" + Integer.toString(codigoUsuario));
             HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
             
             
@@ -122,6 +122,7 @@ public class Usuario {
         
         
         return dadosUsuario;
-    } 
+    }
+    
 }
 

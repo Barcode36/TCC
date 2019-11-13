@@ -34,6 +34,7 @@ import model.Login;
 import model.Usuario;
 import view.TCC;
 
+
 /**
  * FXML Controller class
  *
@@ -95,6 +96,7 @@ public class Login_CadastroController implements Initializable {
     
     
     
+    
     //Responsavel para armazenar o Codigo do Usuário ao fazer login
     private static int codigoUsuario;
     
@@ -148,8 +150,10 @@ public class Login_CadastroController implements Initializable {
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/home/ViewHome.fxml"));
                     Parent root = loader.load();
-                    Scene cena = new Scene(root, 1029, 547);
+                    Scene cena = new Scene(root, 935, 521);
 
+                    
+                    
                     Stage window = ((Stage)((Node)event.getSource()).getScene().getWindow());
 
                     window.setScene(cena);
@@ -219,7 +223,7 @@ public class Login_CadastroController implements Initializable {
                     alert.setTitle("");
                     alert.setHeaderText("Não foi possível realizar o cadastro, tente novamente!");
                     alert.showAndWait();
-                }  
+                }
                 paneCadastro.setVisible(false);
                 paneLogin.setVisible(true);
                 paneLogin.toFront();  

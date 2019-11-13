@@ -1,6 +1,7 @@
 package view.home;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import view.TCC;
@@ -61,6 +64,13 @@ public class ViewHomeController implements Initializable {
 
    @FXML
    private Label txtEventos;
+   
+   @FXML
+   private ImageView fotoPerfil;
+   
+   
+   
+   
    
    //Métodos minímizar, maximizar e fechar
    @FXML
@@ -123,5 +133,13 @@ public class ViewHomeController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //TUDO
+        String path = "http://143.106.241.1/cl18463/tcc/files/views/agenda/imgUser/c7fbed3fbcb1eca9ee24a63871a23b2a.jpg";
+        Image image = new Image(path);
+        fotoPerfil.setImage(image);
+        fotoPerfil.setPreserveRatio(true);
+        
+        
+
     }     
 }

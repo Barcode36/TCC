@@ -580,7 +580,7 @@ public class AgendaController implements Initializable {
                     vBoxItens.getChildren().add(root);
                     CardsEventsController controller = loader.<CardsEventsController>getController();
                     controller.setPosicao(i);
-                    controller.setbtnEvento(eventosUsuario.get(0).getTitulo());
+                    controller.setbtnEvento(eventosUsuario.get(i).getTitulo());
                 }
 
                 //initTable(botao.getText()); 
